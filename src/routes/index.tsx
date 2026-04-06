@@ -445,48 +445,75 @@ function RiadhPackHome() {
                 className="text-xs tracking-widest uppercase text-gray-400 mb-3"
                 style={{ fontFamily: 'Montserrat, sans-serif', letterSpacing: '0.2em' }}
               >
-                À propos de nous
-              </p>
-              <h2
-                className="text-3xl md:text-4xl font-bold text-black mb-6"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}
-              >
-                À propos de Riadh Pack
-              </h2>
-              <div className="section-divider section-divider-left mb-8" />
-              <p className="text-gray-600 leading-relaxed mb-6 text-base">
-                Riadh Pack est une entreprise algérienne spécialisée dans la fabrication de sacs tissés en polypropylène et de solutions d'emballage industriel. Implantée dans la zone industrielle Belhacel à Relizane, nous accompagnons les entreprises avec des produits fiables et de haute qualité.
-              </p>
-              <p className="text-gray-600 leading-relaxed text-base">
-                Notre outil de production moderne nous permet de répondre aux commandes en grande quantité avec des délais compétitifs, tout en garantissant une qualité constante adaptée aux exigences des secteurs agricole, agroalimentaire et industriel.
-              </p>
-            </div>
-            <div className="relative">
-              <div
-                className="w-full h-80 md:h-96"
-                style={{
-                  backgroundImage: `url('riadh pack 1.png')`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              />
-              <div
-                className="absolute bottom-0 right-0 bg-black text-white p-6"
-                style={{ transform: 'translate(20px, 20px)' }}
-              >
-                <div
-                  className="text-2xl font-bold"
+                      {/* ── IMPROVED À PROPOS - Like the Second Example ── */}
+      <section id="apropos" className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-20 items-center">
+            
+            {/* Left Side - Bold Text */}
+            <div className="space-y-10">
+              <div>
+                <p 
+                  className="text-red-600 text-sm tracking-[0.2em] uppercase font-semibold mb-4"
                   style={{ fontFamily: 'Montserrat, sans-serif' }}
                 >
-                  Relizane
+                  À PROPOS DE RIADH PACK
+                </p>
+                <h2 
+                  className="text-5xl md:text-6xl font-bold leading-none text-black"
+                  style={{ fontFamily: 'Montserrat, sans-serif' }}
+                >
+                  Un fabricant algérien<br />de confiance
+                </h2>
+              </div>
+
+              <div className="max-w-lg text-gray-600 text-lg leading-relaxed space-y-6">
+                <p>
+                  Riadh Pack est spécialisée dans la fabrication de sacs en polypropylène tissé 
+                  pour les secteurs agricole, alimentaire et industriel.
+                </p>
+                <p>
+                  Implantés à Relizane dans la zone industrielle Belhacel, nous combinons 
+                  technologie moderne et savoir-faire local pour offrir des solutions 
+                  d'emballage de haute qualité à des prix compétitifs.
+                </p>
+              </div>
+
+              {/* Simple trust line */}
+              <div className="flex items-center gap-8 text-sm">
+                <div className="flex items-center gap-2">
+                  <span className="text-red-600 text-xl">★</span>
+                  <span className="font-medium">Qualité industrielle</span>
                 </div>
-                <div className="text-gray-400 text-sm mt-1">Algérie</div>
+                <div className="flex items-center gap-2">
+                  <span className="text-red-600 text-xl">★</span>
+                  <span className="font-medium">Production locale</span>
+                </div>
               </div>
             </div>
+
+            {/* Right Side - Image (you'll replace the src later) */}
+            <div className="relative">
+              <div className="aspect-video bg-gray-900 rounded-3xl overflow-hidden shadow-2xl">
+                <img 
+                  src="riadh pack 1.png" 
+                  alt="Riadh Pack - Usine Relizane" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Clean badge like the second example */}
+              <div className="absolute -bottom-5 -right-5 bg-white px-8 py-5 rounded-2xl shadow-xl border border-gray-100">
+                <div className="text-2xl font-bold text-black" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  Relizane
+                </div>
+                <div className="text-gray-500 text-sm">Zone Industrielle Belhacel</div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
-
       {/* ── PRODUCTS ── */}
       <section id="produits" className="py-24" style={{ background: '#f5f5f5' }}>
         <div className="max-w-7xl mx-auto px-6">
