@@ -274,12 +274,12 @@ function RiadhPackHome() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
   {/* Logo */}
   <a href="#accueil" className="flex items-center">
-    <img
-      src="/logo_riadhpack.png"
-      alt="Riadh Pack"
-      className="h-10 w-auto object-contain invert"
-    />
-  </a>
+  <img
+    src="/logo_riadhpack.png"
+    alt="Riadh Pack"
+    className="h-12 md:h-16 w-auto object-contain invert"
+  />
+</a>
 </div>
 
           {/* Desktop Nav */}
