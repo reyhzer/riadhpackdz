@@ -436,16 +436,7 @@ function RiadhPackHome() {
         </div>
       </section>
 
-      {/* ── ABOUT ── */}
-      <section id="apropos" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <p
-                className="text-xs tracking-widest uppercase text-gray-400 mb-3"
-                style={{ fontFamily: 'Montserrat, sans-serif', letterSpacing: '0.2em' }}
-              >
-                      {/* ── IMPROVED À PROPOS - Like the Second Example ── */}
+            {/* ── IMPROVED À PROPOS - Like the Second Example ── */}
       <section id="apropos" className="py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-20 items-center">
@@ -492,7 +483,7 @@ function RiadhPackHome() {
               </div>
             </div>
 
-            {/* Right Side - Image (you'll replace the src later) */}
+            {/* Right Side - Image */}
             <div className="relative">
               <div className="aspect-video bg-gray-900 rounded-3xl overflow-hidden shadow-2xl">
                 <img 
@@ -502,7 +493,7 @@ function RiadhPackHome() {
                 />
               </div>
 
-              {/* Clean badge like the second example */}
+              {/* Clean badge */}
               <div className="absolute -bottom-5 -right-5 bg-white px-8 py-5 rounded-2xl shadow-xl border border-gray-100">
                 <div className="text-2xl font-bold text-black" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   Relizane
