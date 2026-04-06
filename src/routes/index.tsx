@@ -347,15 +347,12 @@ function RiadhPackHome() {
         style={{ paddingTop: '64px' }}
       >
         {/* Background */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&q=80')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.72)' }} />
+      <div className="absolute inset-0 overflow-hidden">
+  <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+    <source src="/video.mp4" type="video/mp4" />
+  </video>
+  <div className="absolute inset-0 bg-black/50"></div>
+</div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
           <div className="animate-fade-in-up">
