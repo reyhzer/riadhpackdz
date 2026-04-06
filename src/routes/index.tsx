@@ -275,7 +275,7 @@ function RiadhPackHome() {
   {/* Logo */}
   <a href="#accueil" className="flex items-center">
     <img
-      src="/logo.png"
+      src="/logo_riadhpack.png"
       alt="Riadh Pack"
       className="h-10 w-auto object-contain invert"
     />
