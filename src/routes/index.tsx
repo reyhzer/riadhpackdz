@@ -271,20 +271,16 @@ function RiadhPackHome() {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#accueil" className="flex items-center gap-2 text-decoration-none">
-            <span
-              style={{ fontFamily: 'Montserrat, sans-serif', letterSpacing: '0.08em' }}
-              className="text-white text-xl font-bold tracking-wider"
-            >
-              RIADH
-            </span>
-            <span
-              style={{ fontFamily: 'Montserrat, sans-serif', letterSpacing: '0.08em' }}
-              className="text-gray-400 text-xl font-light tracking-wider"
-            >
-              PACK
-            </span>
-          </a>
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+  {/* Logo */}
+  <a href="#accueil" className="flex items-center">
+    <img
+      src="/logo.png"
+      alt="Riadh Pack"
+      className="h-10 w-auto object-contain invert"
+    />
+  </a>
+</div>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
