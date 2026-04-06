@@ -436,7 +436,7 @@ function RiadhPackHome() {
         </div>
       </section>
 
-                       {/* ── IMPROVED À PROPOS WITH SCROLL ANIMATION ── */}
+                            {/* ── IMPROVED À PROPOS WITH SCROLL ANIMATION ── */}
       <section id="apropos" className="py-28 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-20 items-center">
@@ -506,9 +506,6 @@ function RiadhPackHome() {
               </div>
             </div>
 
-          </div>
-        </div>
-      </section>
           </div>
         </div>
       </section>
