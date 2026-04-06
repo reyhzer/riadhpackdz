@@ -436,13 +436,14 @@ function RiadhPackHome() {
         </div>
       </section>
 
-            {/* ── IMPROVED À PROPOS - Like the Second Example ── */}
-      <section id="apropos" className="py-28 bg-white">
+                 {/* ── IMPROVED À PROPOS WITH SCROLL ANIMATION ── */}
+      <section id="apropos" className="py-28 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-20 items-center">
             
-            {/* Left Side - Bold Text */}
-            <div className="space-y-10">
+            {/* Left Side - Text (animates from left) */}
+            <div className="space-y-10 opacity-0 translate-y-8 transition-all duration-1000 ease-out"
+                 id="about-text">
               <div>
                 <p 
                   className="text-red-600 text-sm tracking-[0.2em] uppercase font-semibold mb-4"
@@ -470,7 +471,6 @@ function RiadhPackHome() {
                 </p>
               </div>
 
-              {/* Simple trust line */}
               <div className="flex items-center gap-8 text-sm">
                 <div className="flex items-center gap-2">
                   <span className="text-red-600 text-xl">★</span>
@@ -483,8 +483,9 @@ function RiadhPackHome() {
               </div>
             </div>
 
-            {/* Right Side - Image */}
-            <div className="relative">
+            {/* Right Side - Image (animates from right) */}
+            <div className="relative opacity-0 translate-y-8 transition-all duration-1000 ease-out delay-200"
+                 id="about-image">
               <div className="aspect-video bg-gray-900 rounded-3xl overflow-hidden shadow-2xl">
                 <img 
                   src="riadh pack 1.png" 
@@ -501,6 +502,10 @@ function RiadhPackHome() {
                 <div className="text-gray-500 text-sm">Zone Industrielle Belhacel</div>
               </div>
             </div>
+
+          </div>
+        </div>
+      </section>
 
           </div>
         </div>
@@ -949,6 +954,22 @@ function RiadhPackHome() {
           </div>
         </div>
       </footer>
+        {/* Scroll Animation for About Section */}
+      <script dangerouslySetInnerHTML={{
+        __html: `
+          window.addEventListener('scroll', () => {
+            const text = document.getElementById('about-text');
+            const image = document.getElementById('about-image');
+            if (!text || !image) return;
+
+            const rect = text.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.85) {
+              text.classList.add('opacity-100', 'translate-y-0');
+              image.classList.add('opacity-100', 'translate-y-0');
+            }
+          });
+        `
+      }} />
 
       {/* ── FLOATING WHATSAPP ── */}
       <a
