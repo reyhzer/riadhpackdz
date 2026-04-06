@@ -264,48 +264,44 @@ function RiadhPackHome() {
   return (
     <div className="min-h-screen" style={{ fontFamily: 'Open Sans, sans-serif' }}>
 
-      {/* ── HEADER ── */}
+            {/* ── IMPROVED HEADER - Clean White like JP Extrusiontech ── */}
       <header
-        className="fixed top-0 left-0 right-0 z-50 bg-black"
-        style={{ borderBottom: '1px solid #222' }}
+        className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100"
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
           {/* Logo */}
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-  {/* Logo */}
-  <a href="#accueil" className="flex items-center">
-  <img
-    src="/logo_riadhpack.png"
-    alt="Riadh Pack"
-    className="h-12 md:h-16 w-auto object-contain invert"
-  />
-</a>
-</div>
+          <a href="#accueil" className="flex items-center">
+            <img
+              src="/logo_riadhpack.png"
+              alt="Riadh Pack"
+              className="h-14 md:h-16 w-auto object-contain"
+            />
+          </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-10">
             {navLinks.map(link => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-gray-300 hover:text-white text-sm font-semibold tracking-widest uppercase transition-colors"
-                style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '0.75rem' }}
+                className="text-gray-800 hover:text-black text-sm font-semibold tracking-widest uppercase transition-colors"
+                style={{ fontFamily: 'Montserrat, sans-serif' }}
               >
                 {link.label}
               </a>
             ))}
             <a
               href="#contact"
-              className="bg-white text-black px-5 py-2 text-xs font-bold tracking-widest uppercase hover:bg-gray-200 transition-colors"
+              className="bg-red-600 hover:bg-red-700 text-white px-7 py-3 text-xs font-bold tracking-widest uppercase transition-all rounded-md"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
-              Devis
+              DEMANDER UN DEVIS
             </a>
           </nav>
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-white p-2"
+            className="md:hidden text-gray-800 p-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Menu"
           >
@@ -320,22 +316,29 @@ function RiadhPackHome() {
 
         {/* Mobile Nav */}
         {menuOpen && (
-          <div className="md:hidden bg-black border-t border-gray-800 px-6 py-4 flex flex-col gap-4">
+          <div className="md:hidden bg-white border-t border-gray-100 px-6 py-6 flex flex-col gap-5 shadow-md">
             {navLinks.map(link => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="text-gray-300 hover:text-white text-sm font-semibold tracking-widest uppercase"
-                style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '0.75rem' }}
+                className="text-gray-800 hover:text-black text-base font-semibold tracking-widest uppercase py-2"
+                style={{ fontFamily: 'Montserrat, sans-serif' }}
               >
                 {link.label}
               </a>
             ))}
+            <a
+              href="#contact"
+              onClick={() => setMenuOpen(false)}
+              className="bg-red-600 hover:bg-red-700 text-white px-6 py-4 text-center text-sm font-bold tracking-widest uppercase rounded-md mt-4"
+              style={{ fontFamily: 'Montserrat, sans-serif' }}
+            >
+              DEMANDER UN DEVIS
+            </a>
           </div>
         )}
       </header>
-
       {/* ── HERO ── */}
       <section
         id="accueil"
