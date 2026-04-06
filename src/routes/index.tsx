@@ -457,7 +457,7 @@ function RiadhPackHome() {
               <div
                 className="w-full h-80 md:h-96"
                 style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80')`,
+                  backgroundImage: `url('riadh pack 1.png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
