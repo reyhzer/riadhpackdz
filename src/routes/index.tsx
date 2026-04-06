@@ -436,14 +436,16 @@ function RiadhPackHome() {
         </div>
       </section>
 
-                 {/* ── IMPROVED À PROPOS WITH SCROLL ANIMATION ── */}
+                       {/* ── IMPROVED À PROPOS WITH SCROLL ANIMATION ── */}
       <section id="apropos" className="py-28 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-20 items-center">
             
-            {/* Left Side - Text (animates from left) */}
-            <div className="space-y-10 opacity-0 translate-y-8 transition-all duration-1000 ease-out"
-                 id="about-text">
+            {/* Left Side - Text */}
+            <div 
+              className="space-y-10 opacity-0 translate-y-12 transition-all duration-1000 ease-out"
+              id="about-text"
+            >
               <div>
                 <p 
                   className="text-red-600 text-sm tracking-[0.2em] uppercase font-semibold mb-4"
@@ -483,9 +485,11 @@ function RiadhPackHome() {
               </div>
             </div>
 
-            {/* Right Side - Image (animates from right) */}
-            <div className="relative opacity-0 translate-y-8 transition-all duration-1000 ease-out delay-200"
-                 id="about-image">
+            {/* Right Side - Image */}
+            <div 
+              className="relative opacity-0 translate-y-12 transition-all duration-1000 ease-out delay-300"
+              id="about-image"
+            >
               <div className="aspect-video bg-gray-900 rounded-3xl overflow-hidden shadow-2xl">
                 <img 
                   src="riadh pack 1.png" 
@@ -494,7 +498,6 @@ function RiadhPackHome() {
                 />
               </div>
 
-              {/* Clean badge */}
               <div className="absolute -bottom-5 -right-5 bg-white px-8 py-5 rounded-2xl shadow-xl border border-gray-100">
                 <div className="text-2xl font-bold text-black" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   Relizane
@@ -506,7 +509,6 @@ function RiadhPackHome() {
           </div>
         </div>
       </section>
-
           </div>
         </div>
       </section>
@@ -954,22 +956,27 @@ function RiadhPackHome() {
           </div>
         </div>
       </footer>
-        {/* Scroll Animation for About Section */}
-      <script dangerouslySetInnerHTML={{
-        __html: `
-          window.addEventListener('scroll', () => {
-            const text = document.getElementById('about-text');
-            const image = document.getElementById('about-image');
-            if (!text || !image) return;
+              {/* Scroll Animation Script */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.addEventListener('load', () => {
+              const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                  }
+                });
+              }, { threshold: 0.3 });
 
-            const rect = text.getBoundingClientRect();
-            if (rect.top < window.innerHeight * 0.85) {
-              text.classList.add('opacity-100', 'translate-y-0');
-              image.classList.add('opacity-100', 'translate-y-0');
-            }
-          });
-        `
-      }} />
+              const textEl = document.getElementById('about-text');
+              const imageEl = document.getElementById('about-image');
+              if (textEl) observer.observe(textEl);
+              if (imageEl) observer.observe(imageEl);
+            });
+          `
+        }}
+      />
 
       {/* ── FLOATING WHATSAPP ── */}
       <a
