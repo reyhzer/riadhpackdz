@@ -264,7 +264,7 @@ function RiadhPackHome() {
   return (
     <div className="min-h-screen" style={{ fontFamily: 'Open Sans, sans-serif' }}>
 
-            {/* ── IMPROVED HEADER - Clean White like JP Extrusiontech ── */}
+                  {/* ── IMPROVED HEADER - Clean White like JP Extrusiontech ── */}
       <header
         className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100"
       >
@@ -339,11 +339,12 @@ function RiadhPackHome() {
           </div>
         )}
       </header>
-            {/* ── IMPROVED HERO (Bigger text + Better overlay like JP site) ── */}
+
+      {/* ── IMPROVED HERO (Bigger text + Better overlay) ── */}
       <section
         id="accueil"
         className="relative flex items-center justify-center min-h-screen"
-        style={{ paddingTop: '80px' }}   {/* increased a bit for the taller header */}
+        style={{ paddingTop: '80px' }}
       >
         {/* Background Video + Stronger Overlay */}
         <div className="absolute inset-0 overflow-hidden">
@@ -356,7 +357,6 @@ function RiadhPackHome() {
           >
             <source src="/video.mp4" type="video/mp4" />
           </video>
-          {/* Improved dark gradient overlay - makes white text pop much better */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black/75"></div>
         </div>
 
@@ -369,7 +369,6 @@ function RiadhPackHome() {
               Fabricant Algérien · Zone Industrielle Belhacel, Relizane
             </p>
             
-            {/* Bigger, bolder headline like the reference site */}
             <h1
               className="text-white text-5xl md:text-7xl font-bold leading-none mb-8 tracking-tight"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
