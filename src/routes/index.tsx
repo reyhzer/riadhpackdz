@@ -949,7 +949,7 @@ function RiadhPackHome() {
             className="border-t border-gray-800 pt-8 text-center text-gray-600 text-xs"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
-           Merci Sara pour les 50€ jtm .
+           2026 riadpack reserved .
           </div>
         </div>
       </footer>
