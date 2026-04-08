@@ -122,61 +122,131 @@ function RiadhPackHome() {
   return (
     <div className="min-h-screen bg-black text-white" style={{ fontFamily: 'Open Sans, sans-serif' }}>
 
+      function RiadhPackHome() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const navLinks = [
+    { href: '#accueil', label: 'Accueil' },
+    { href: '#produits', label: 'Produits' },
+    { href: '#apropos', label: 'À propos' },
+    { href: '#contact', label: 'Contact' },
+  ]
+
+  return (
+    <div className="min-h-screen bg-black text-white">
+
       {/* HEADER */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-lg border-b border-white/10">
+      <header className="fixed top-0 left-0 right-0 z-[1000] bg-black/95 backdrop-blur-lg border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
-          <a href="#accueil" className="flex items-center">
-            <img src="/logo_riadhpack.png" alt="Riadh Pack" className="h-16 w-auto object-contain" />
+          
+          {/* LOGO */}
+          <a href="#accueil">
+            <img src="/logo_riadhpack.png" alt="Riadh Pack" className="h-16" />
           </a>
 
+          {/* DESKTOP NAV */}
           <nav className="hidden md:flex items-center gap-10">
             {navLinks.map(link => (
-              <a key={link.href} href={link.href} className="text-white/80 hover:text-white text-sm font-semibold tracking-widest uppercase transition-colors" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <a key={link.href} href={link.href}
+                className="text-white/80 hover:text-white text-sm font-semibold tracking-widest uppercase">
                 {link.label}
               </a>
             ))}
-            <a href="#contact" className="bg-red-600 hover:bg-red-700 px-8 py-3.5 text-xs font-bold tracking-widest uppercase rounded-xl transition-all">
+
+            <a href="#contact"
+              className="bg-red-600 hover:bg-red-700 px-8 py-3 rounded-xl text-xs font-bold uppercase">
               DEMANDER UN DEVIS
             </a>
           </nav>
 
-          <button className="md:hidden text-white text-3xl" onClick={() => setMenuOpen(!menuOpen)}>
+          {/* MOBILE BUTTON */}
+          <button
+            className="md:hidden text-white text-3xl z-[1100]"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             {menuOpen ? '✕' : '☰'}
           </button>
         </div>
 
-        {menuOpen && (
-          <div className="md:hidden bg-black border-t border-white/10 px-6 py-8 flex flex-col gap-6 text-center">
+        {/* MOBILE MENU */}
+        <div
+          className={`md:hidden absolute top-full left-0 w-full bg-black border-t border-white/10 transition-all duration-300 overflow-hidden z-[999]
+          ${menuOpen ? 'max-h-[400px] opacity-100 py-6' : 'max-h-0 opacity-0 py-0'}`}
+        >
+          <div className="flex flex-col items-center gap-6">
             {navLinks.map(link => (
-              <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="text-lg py-2 text-white">
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="text-lg text-white"
+              >
                 {link.label}
               </a>
             ))}
-            <a href="#contact" onClick={() => setMenuOpen(false)} className="bg-red-600 py-4 rounded-xl font-bold mt-4">
+
+            <a
+              href="#contact"
+              onClick={() => setMenuOpen(false)}
+              className="bg-red-600 px-6 py-3 rounded-xl font-bold"
+            >
               DEMANDER UN DEVIS
             </a>
           </div>
-        )}
+        </div>
       </header>
 
       {/* HERO */}
-      <section id="accueil" className="relative flex items-center justify-center min-h-screen pt-20">
-        <div className="absolute inset-0 overflow-hidden">
-          <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+      <section
+        id="accueil"
+        className="relative flex items-center justify-center min-h-screen pt-20 z-0"
+      >
+        {/* BACKGROUND */}
+        <div className="absolute inset-0 overflow-hidden z-0">
+          
+          {/* VIDEO (FIXED CLICK ISSUE) */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover pointer-events-none"
+          >
             <source src="/video.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/90" />
+
+          {/* OVERLAY */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/90 pointer-events-none" />
         </div>
 
+        {/* CONTENT */}
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <p className="text-red-400 text-sm tracking-[3px] uppercase mb-6 font-semibold">FABRICANT ALGÉRIEN • DEPUIS 2015</p>
-          <h1 className="text-white text-6xl md:text-7xl lg:text-8xl font-bold leading-none tracking-tighter mb-8">EMBALLAGE INDUSTRIEL<br />D'EXCELLENCE</h1>
-          <p className="text-gray-300 text-xl md:text-2xl max-w-3xl mx-auto mb-12">Sacs en polypropylène tissé de haute qualité pour l'agriculture, l'agroalimentaire et l'industrie.</p>
+          <p className="text-red-400 text-sm tracking-[3px] uppercase mb-6 font-semibold">
+            FABRICANT ALGÉRIEN • DEPUIS 2015
+          </p>
 
-          <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <a href="#contact" className="bg-white text-black px-12 py-5 text-lg font-bold tracking-widest uppercase hover:bg-gray-100 rounded-2xl transition-all">OBTENIR UN DEVIS</a>
-            <a href="https://wa.me/213560042526" className="border-2 border-white text-white px-10 py-5 text-lg font-bold tracking-widest uppercase hover:bg-white hover:text-black rounded-2xl flex items-center gap-3 transition-all">
-              <IconWhatsApp /> WhatsApp
+          <h1 className="text-white text-5xl md:text-7xl font-bold mb-6">
+            EMBALLAGE INDUSTRIEL<br />D'EXCELLENCE
+          </h1>
+
+          <p className="text-gray-300 text-lg md:text-xl mb-10">
+            Sacs en polypropylène tissé de haute qualité pour l'agriculture,
+            l'agroalimentaire et l'industrie.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#contact"
+              className="bg-white text-black px-10 py-4 font-bold rounded-xl"
+            >
+              OBTENIR UN DEVIS
+            </a>
+
+            <a
+              href="https://wa.me/213560042526"
+              className="border border-white px-10 py-4 rounded-xl"
+            >
+              WhatsApp
             </a>
           </div>
         </div>
