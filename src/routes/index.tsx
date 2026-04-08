@@ -160,23 +160,80 @@ function RiadhPackHome() {
         </div>
       </section>
 
-      {/* À PROPOS */}
-      <section id="apropos" className="py-28 bg-zinc-950 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <p className="text-red-400 uppercase tracking-widest mb-4">À PROPOS DE RIADH PACK</p>
-            <h2 className="text-5xl font-bold leading-tight">Un fabricant algérien<br />de confiance</h2>
-            <div className="mt-8 text-lg text-gray-300 space-y-6">
-              <p>Riadh Pack est spécialisée dans la fabrication de sacs en polypropylène tissé pour les secteurs agricole, alimentaire et industriel.</p>
-              <p>Implantés à Relizane, nous combinons technologie moderne et savoir-faire local.</p>
-            </div>
+      {/* ── À PROPOS SECTION (with sliding background restored) ── */}
+<section id="apropos" className="relative py-28 overflow-hidden min-h-[700px] flex items-center">
+  
+  {/* Sliding Background Images */}
+  <div className="absolute inset-0 z-0">
+    <div className="slideshow absolute inset-0">
+      <img src="/bg1.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-0 animate-slide" />
+      <img src="/bg2.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-0 animate-slide" style={{ animationDelay: '4s' }} />
+      <img src="/bg3.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-0 animate-slide" style={{ animationDelay: '8s' }} />
+      <img src="/bg4.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-0 animate-slide" style={{ animationDelay: '12s' }} />
+      <img src="/bg5.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-0 animate-slide" style={{ animationDelay: '16s' }} />
+      <img src="/bg6.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-0 animate-slide" style={{ animationDelay: '20s' }} />
+    </div>
+    {/* Strong dark overlay for premium look */}
+    <div className="absolute inset-0 bg-black/75"></div>
+  </div>
+
+  <div className="relative z-10 max-w-7xl mx-auto px-6">
+    <div className="grid md:grid-cols-2 gap-20 items-center">
+      
+      {/* Left - Text */}
+      <div className="space-y-10">
+        <div>
+          <p className="text-red-400 text-sm tracking-[3px] uppercase font-semibold mb-4">
+            À PROPOS DE RIADH PACK
+          </p>
+          <h2 className="text-5xl md:text-6xl font-bold leading-none tracking-tight">
+            Un fabricant algérien<br />de confiance depuis 2015
+          </h2>
+        </div>
+
+        <div className="max-w-lg text-gray-300 text-lg leading-relaxed space-y-6">
+          <p>
+            Riadh Pack est spécialisée dans la fabrication de sacs en polypropylène tissé 
+            pour les secteurs agricole, alimentaire et industriel.
+          </p>
+          <p>
+            Implantés à Relizane dans la zone industrielle Belhacel, nous combinons 
+            technologie moderne et savoir-faire local pour offrir des solutions 
+            d'emballage de haute qualité à des prix compétitifs.
+          </p>
+        </div>
+
+        <div className="flex gap-8 text-sm">
+          <div className="flex items-center gap-3">
+            <span className="text-red-500 text-2xl">★</span>
+            <span className="font-medium">Qualité industrielle</span>
           </div>
-          <div className="relative">
-            <img src="riadh pack 1.png" alt="Usine" className="rounded-3xl shadow-2xl" />
+          <div className="flex items-center gap-3">
+            <span className="text-red-500 text-2xl">★</span>
+            <span className="font-medium">Production locale</span>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Right - Image */}
+      <div className="relative">
+        <div className="aspect-video bg-zinc-900 rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+          <img 
+            src="riadh pack 1.png" 
+            alt="Riadh Pack - Usine Relizane" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        <div className="absolute -bottom-6 -right-6 bg-zinc-900 border border-white/10 px-8 py-6 rounded-3xl shadow-2xl">
+          <div className="text-3xl font-bold text-white">Relizane</div>
+          <div className="text-red-400 text-sm tracking-widest">Zone Industrielle Belhacel</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* PRODUCTS */}
       <section id="produits" className="py-24 bg-[#0A0A0A]">
