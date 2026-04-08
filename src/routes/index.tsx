@@ -122,19 +122,6 @@ function RiadhPackHome() {
   return (
     <div className="min-h-screen bg-black text-white" style={{ fontFamily: 'Open Sans, sans-serif' }}>
 
-      function RiadhPackHome() {
-  const [menuOpen, setMenuOpen] = useState(false)
-
-  const navLinks = [
-    { href: '#accueil', label: 'Accueil' },
-    { href: '#produits', label: 'Produits' },
-    { href: '#apropos', label: 'À propos' },
-    { href: '#contact', label: 'Contact' },
-  ]
-
-  return (
-    <div className="min-h-screen bg-black text-white">
-
       {/* HEADER */}
       <header className="fixed top-0 left-0 right-0 z-[1000] bg-black/95 backdrop-blur-lg border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
