@@ -160,21 +160,21 @@ function RiadhPackHome() {
         </div>
       </section>
 
-      {/* ── À PROPOS SECTION (with sliding background restored) ── */}
-<section id="apropos" className="relative py-28 overflow-hidden min-h-[700px] flex items-center">
+     {/* ── À PROPOS SECTION - FIXED (No more cropping) ── */}
+<section id="apropos" className="relative py-32 bg-zinc-950 overflow-hidden">
   
-  {/* Sliding Background Images */}
+  {/* Background Slideshow */}
   <div className="absolute inset-0 z-0">
     <div className="slideshow absolute inset-0">
-      <img src="/bg1.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-0 animate-slide" />
-      <img src="/bg2.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-0 animate-slide" style={{ animationDelay: '4s' }} />
-      <img src="/bg3.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-0 animate-slide" style={{ animationDelay: '8s' }} />
-      <img src="/bg4.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-0 animate-slide" style={{ animationDelay: '12s' }} />
-      <img src="/bg5.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-0 animate-slide" style={{ animationDelay: '16s' }} />
-      <img src="/bg6.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-0 animate-slide" style={{ animationDelay: '20s' }} />
+      <img src="/bg1.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <img src="/bg2.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <img src="/bg3.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <img src="/bg4.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <img src="/bg5.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <img src="/bg6.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
     </div>
-    {/* Strong dark overlay for premium look */}
-    <div className="absolute inset-0 bg-black/75"></div>
+    {/* Strong dark overlay */}
+    <div className="absolute inset-0 bg-black/80"></div>
   </div>
 
   <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -186,8 +186,8 @@ function RiadhPackHome() {
           <p className="text-red-400 text-sm tracking-[3px] uppercase font-semibold mb-4">
             À PROPOS DE RIADH PACK
           </p>
-          <h2 className="text-5xl md:text-6xl font-bold leading-none tracking-tight">
-            Un fabricant algérien<br />de confiance depuis 2015
+          <h2 className="text-5xl md:text-6xl font-bold leading-none tracking-tight text-white">
+            Un fabricant algérien<br />
           </h2>
         </div>
 
