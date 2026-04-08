@@ -451,54 +451,54 @@ function RiadhPackHome() {
     </div>
 
     {/* Overlay for readability */}
-    <div className="absolute inset-0 bg-black/30"></div>
+    <div className="absolute inset-0 bg-black/50"></div>
   </div>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-20 items-center">
             
             {/* Left Side - Text */}
-            <div 
-              className="space-y-10 opacity-0 translate-y-12 transition-all duration-1000 ease-out"
-              id="about-text"
-            >
-              <div>
-                <p 
-                  className="text-red-600 text-sm tracking-[0.2em] uppercase font-semibold mb-4"
-                  style={{ fontFamily: 'Montserrat, sans-serif' }}
-                >
-                  À PROPOS DE RIADH PACK
-                </p>
-                <h2 
-                  className="text-5xl md:text-6xl font-bold leading-none text-black"
-                  style={{ fontFamily: 'Montserrat, sans-serif' }}
-                >
-                  Un fabricant algérien<br />de confiance
-                </h2>
-              </div>
+<div 
+  className="space-y-10 opacity-0 translate-y-12 transition-all duration-1000 ease-out"
+  id="about-text"
+>
+  <div>
+    <p 
+      className="text-red-400 text-sm tracking-[0.2em] uppercase font-semibold mb-4"
+      style={{ fontFamily: 'Montserrat, sans-serif' }}
+    >
+      À PROPOS DE RIADH PACK
+    </p>
+    <h2 
+      className="text-white text-5xl md:text-6xl font-bold leading-none"
+      style={{ fontFamily: 'Montserrat, sans-serif' }}
+    >
+      Un fabricant algérien<br />de confiance
+    </h2>
+  </div>
 
-              <div className="max-w-lg text-gray-600 text-lg leading-relaxed space-y-6">
-                <p>
-                  Riadh Pack est spécialisée dans la fabrication de sacs en polypropylène tissé 
-                  pour les secteurs agricole, alimentaire et industriel.
-                </p>
-                <p>
-                  Implantés à Relizane dans la zone industrielle Belhacel, nous combinons 
-                  technologie moderne et savoir-faire local pour offrir des solutions 
-                  d'emballage de haute qualité à des prix compétitifs.
-                </p>
-              </div>
+  <div className="max-w-lg text-white/90 text-lg leading-relaxed space-y-6">
+    <p>
+      Riadh Pack est spécialisée dans la fabrication de sacs en polypropylène tissé 
+      pour les secteurs agricole, alimentaire et industriel.
+    </p>
+    <p>
+      Implantés à Relizane dans la zone industrielle Belhacel, nous combinons 
+      technologie moderne et savoir-faire local pour offrir des solutions 
+      d'emballage de haute qualité à des prix compétitifs.
+    </p>
+  </div>
 
-              <div className="flex items-center gap-8 text-sm">
-                <div className="flex items-center gap-2">
-                  <span className="text-red-600 text-xl">★</span>
-                  <span className="font-medium">Qualité industrielle</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-red-600 text-xl">★</span>
-                  <span className="font-medium">Production locale</span>
-                </div>
-              </div>
-            </div>
+  <div className="flex items-center gap-8 text-sm">
+    <div className="flex items-center gap-2">
+      <span className="text-red-400 text-xl">★</span>
+      <span className="font-medium text-white">Qualité industrielle</span>
+    </div>
+    <div className="flex items-center gap-2">
+      <span className="text-red-400 text-xl">★</span>
+      <span className="font-medium text-white">Production locale</span>
+    </div>
+  </div>
+</div>
 
             {/* Right Side - Image */}
             <div 
