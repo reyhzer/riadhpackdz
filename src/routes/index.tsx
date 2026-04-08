@@ -437,7 +437,22 @@ function RiadhPackHome() {
       </section>
 
                             {/* ── IMPROVED À PROPOS WITH SCROLL ANIMATION ── */}
-      <section id="apropos" className="py-28 bg-white overflow-hidden">
+      <section id="apropos" className="relative py-28 overflow-hidden">
+
+  {/* Background Slideshow */}
+  <div className="absolute inset-0 z-0">
+    <div className="slideshow">
+      <img src="/bg1.jpg" />
+      <img src="/bg2.jpg" />
+      <img src="/bg3.jpg" />
+      <img src="/bg4.jpg" />
+      <img src="/bg5.jpg" />
+      <img src="/bg6.jpg" />
+    </div>
+
+    {/* Overlay for readability */}
+    <div className="absolute inset-0 bg-white/80"></div>
+  </div>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-20 items-center">
             
