@@ -1,5 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
+const darkBg = '#0A0A0A';
+const accentRed = '#E30613';   // Keep your red but make it richer
+const lightText = '#F5F5F5';
+const grayText = '#AAAAAA';
 
 export const Route = createFileRoute('/')({
   component: RiadhPackHome,
@@ -265,144 +269,69 @@ function RiadhPackHome() {
     <div className="min-h-screen" style={{ fontFamily: 'Open Sans, sans-serif' }}>
 
                   {/* ── IMPROVED HEADER - Clean White like JP Extrusiontech ── */}
-      <header
-        className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100"
+     <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-lg border-b border-white/10">
+  <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+    <a href="#accueil" className="flex items-center">
+      <img src="/logo_riadhpack.png" alt="Riadh Pack" className="h-16 w-auto" />
+    </a>
+
+    <nav className="hidden md:flex items-center gap-10">
+      {navLinks.map(link => (
+        <a
+          key={link.href}
+          href={link.href}
+          className="text-white/80 hover:text-white text-sm font-semibold tracking-widest uppercase transition-colors"
+          style={{ fontFamily: 'Montserrat, sans-serif' }}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="#contact"
+        className="bg-red-600 hover:bg-red-700 text-white px-8 py-3.5 text-xs font-bold tracking-widest uppercase transition-all rounded-xl"
+        style={{ fontFamily: 'Montserrat, sans-serif' }}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
-          {/* Logo */}
-          <a href="#accueil" className="flex items-center">
-            <img
-              src="/logo_riadhpack.png"
-              alt="Riadh Pack"
-              className="h-14 md:h-16 w-auto object-contain"
-            />
-          </a>
+        DEMANDER UN DEVIS
+      </a>
+    </nav>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-10">
-            {navLinks.map(link => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-gray-800 hover:text-black text-sm font-semibold tracking-widest uppercase transition-colors"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              className="bg-red-600 hover:bg-red-700 text-white px-7 py-3 text-xs font-bold tracking-widest uppercase transition-all rounded-md"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
-              DEMANDER UN DEVIS
-            </a>
-          </nav>
-
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden text-gray-800 p-2"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Menu"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-              {menuOpen
-                ? <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                : <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              }
-            </svg>
-          </button>
-        </div>
-
-        {/* Mobile Nav */}
-        {menuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-100 px-6 py-6 flex flex-col gap-5 shadow-md">
-            {navLinks.map(link => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-gray-800 hover:text-black text-base font-semibold tracking-widest uppercase py-2"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              onClick={() => setMenuOpen(false)}
-              className="bg-red-600 hover:bg-red-700 text-white px-6 py-4 text-center text-sm font-bold tracking-widest uppercase rounded-md mt-4"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
-              DEMANDER UN DEVIS
-            </a>
-          </div>
-        )}
-      </header>
+    {/* Mobile hamburger - keep as is but change color to white */}
+  </div>
+</header>
 
       {/* ── IMPROVED HERO (Bigger text + Better overlay) ── */}
-      <section
-        id="accueil"
-        className="relative flex items-center justify-center min-h-screen"
-        style={{ paddingTop: '80px' }}
-      >
-        {/* Background Video + Stronger Overlay */}
-        <div className="absolute inset-0 overflow-hidden">
-          <video 
-            autoPlay 
-            muted 
-            loop 
-            playsInline 
-            className="w-full h-full object-cover"
-          >
-            <source src="/video.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black/75"></div>
-        </div>
+     <section id="accueil" className="relative flex items-center justify-center min-h-screen pt-20">
+  <div className="absolute inset-0 overflow-hidden">
+    <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+      <source src="/video.mp4" type="video/mp4" />
+    </video>
+    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/90"></div>
+  </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <div className="animate-fade-in-up">
-            <p
-              className="text-gray-300 text-sm tracking-[0.25em] uppercase mb-6"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
-              Fabricant Algérien · Zone Industrielle Belhacel, Relizane
-            </p>
-            
-            <h1
-              className="text-white text-5xl md:text-7xl font-bold leading-none mb-8 tracking-tight"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
-              Solutions d'emballage<br />
-              industriel de confiance
-            </h1>
+  <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+    <p className="text-red-400 text-sm tracking-[3px] uppercase mb-6 font-semibold">
+      FABRICANT ALGÉRIEN • DEPUIS 2015
+    </p>
+    
+    <h1 className="text-white text-6xl md:text-7xl lg:text-8xl font-bold leading-none tracking-tighter mb-8">
+      EMBALLAGE INDUSTRIEL<br />D'EXCELLENCE
+    </h1>
 
-            <p className="text-gray-200 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed">
-              Fabricant de sacs en polypropylène tissé pour les secteurs agricole, 
-              alimentaire et industriel. Qualité industrielle, prix direct usine.
-            </p>
+    <p className="text-gray-300 text-xl md:text-2xl max-w-3xl mx-auto mb-12">
+      Sacs en polypropylène tissé de haute qualité pour l'agriculture, 
+      l'agroalimentaire et l'industrie.
+    </p>
 
-            <div className="flex flex-col sm:flex-row gap-5 justify-center">
-              <a
-                href="#contact"
-                className="bg-white text-black px-10 py-5 text-base font-bold tracking-widest uppercase hover:bg-gray-100 transition-all rounded-md"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}
-              >
-                Demander un devis
-              </a>
-              <a
-                href="https://wa.me/213560042526"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 border-2 border-white text-white px-10 py-5 text-base font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all rounded-md"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}
-              >
-                <IconWhatsApp />
-                Contacter via WhatsApp
-              </a>
-            </div>
-          </div>
-        </div>
+    <div className="flex flex-col sm:flex-row gap-5 justify-center">
+      <a href="#contact" className="bg-white text-black px-12 py-5 text-lg font-bold tracking-widest uppercase hover:bg-gray-100 transition-all rounded-2xl">
+        OBTENIR UN DEVIS
+      </a>
+      <a href="https://wa.me/213560042526" className="border-2 border-white text-white px-10 py-5 text-lg font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all rounded-2xl flex items-center gap-3">
+        <IconWhatsApp /> WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
 
         {/* Scroll indicator */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
@@ -525,104 +454,32 @@ function RiadhPackHome() {
         </div>
       </section>
       {/* ── PRODUCTS ── */}
-      <section id="produits" className="py-24" style={{ background: '#f5f5f5' }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <p
-              className="text-xs tracking-widest uppercase text-gray-400 mb-3"
-              style={{ fontFamily: 'Montserrat, sans-serif', letterSpacing: '0.2em' }}
-            >
-              Notre gamme
-            </p>
-            <h2
-              className="text-3xl md:text-4xl font-bold text-black mb-4"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
-              Nos produits
-            </h2>
-            <div className="section-divider" />
-          </div>
+     {/* Replace the whole products section background */}
+<section id="produits" className="py-24 bg-[#0A0A0A]">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="text-center mb-16">
+      <p className="text-red-400 text-sm tracking-widest uppercase mb-3">NOTRE GAMME</p>
+      <h2 className="text-white text-5xl font-bold tracking-tight">Nos Produits Premium</h2>
+    </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: <IconBag />,
-                title: 'Sacs tissés en polypropylène',
-                desc: 'Sacs standard haute résistance pour charges lourdes. Idéaux pour le stockage et le transport de matières en vrac.',
-                use: 'Tous secteurs industriels',
-                image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
-              },
-              {
-                icon: <IconWheat />,
-                title: 'Sacs agricoles',
-                desc: 'Conçus pour les graines, engrais, compost et produits agricoles. Résistants à l\'humidité et aux UV.',
-                use: 'Agriculture & élevage',
-                image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80',
-              },
-              {
-                icon: <IconFood />,
-                title: 'Sacs alimentaires',
-                desc: 'Pour farine, sucre, semoule et autres denrées alimentaires. Conformes aux normes d\'hygiène alimentaire.',
-                use: 'Industrie agroalimentaire',
-                image: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&q=80',
-              },
-              {
-                icon: <IconValve />,
-                title: 'Sacs à valve',
-                desc: 'Spécialement conçus pour le ciment, la chaux, le plâtre et autres poudres industrielles à remplissage automatique.',
-                use: 'BTP & industrie chimique',
-                image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80',
-              },
-              {
-                icon: <IconCustom />,
-                title: 'Sacs personnalisés avec logo',
-                desc: 'Impression flexographique jusqu\'à 6 couleurs. Personnalisation complète : couleur, taille, impression, renforcement.',
-                use: 'Marques & exportateurs',
-                image: 'https://images.unsplash.com/photo-1586769852044-692d6e3703f0?w=600&q=80',
-              },
-              {
-                icon: <IconScale />,
-                title: 'Commandes en grande quantité',
-                desc: 'Capacité de production industrielle pour répondre aux commandes en gros avec des délais optimisés.',
-                use: 'Grossistes & exportateurs',
-                image: 'https://images.unsplash.com/photo-1586769852836-bc069f19e1b8?w=600&q=80',
-              },
-            ].map((product) => (
-              <div
-                key={product.title}
-                className="bg-white group overflow-hidden"
-                style={{ border: '1px solid #e5e5e5' }}
-              >
-                <div className="overflow-hidden h-48">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="text-black">{product.icon}</div>
-                    <h3
-                      className="font-bold text-black text-base"
-                      style={{ fontFamily: 'Montserrat, sans-serif' }}
-                    >
-                      {product.title}
-                    </h3>
-                  </div>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{product.desc}</p>
-                  <div
-                    className="text-xs font-semibold tracking-widest uppercase text-gray-400"
-                    style={{ fontFamily: 'Montserrat, sans-serif' }}
-                  >
-                    {product.use}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Your product cards - update each card like this: */}
+      <div className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group hover:border-red-600/30 transition-all duration-500">
+        <div className="h-64 overflow-hidden">
+          <img src={product.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
         </div>
-      </section>
+        <div className="p-8">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="text-red-500">{product.icon}</div>
+            <h3 className="text-white text-xl font-bold">{product.title}</h3>
+          </div>
+          <p className="text-gray-400 text-[15px] leading-relaxed">{product.desc}</p>
+          <p className="text-red-400 text-xs tracking-widest mt-6 uppercase">{product.use}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* ── SECTORS ── */}
       <section className="py-24 bg-white">
