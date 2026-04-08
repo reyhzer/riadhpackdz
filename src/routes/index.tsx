@@ -451,7 +451,7 @@ function RiadhPackHome() {
     </div>
 
     {/* Overlay for readability */}
-    <div className="absolute inset-0 bg-white/80"></div>
+    <div className="absolute inset-0 bg-black/30"></div>
   </div>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-20 items-center">
