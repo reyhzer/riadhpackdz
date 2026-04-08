@@ -512,7 +512,7 @@ function RiadhPackHome() {
       {/* ── PRODUCTS ── */}
       <section id="produits" className="py-24" style={{ background: '#f5f5f5' }}>
         {/* Background Slideshow */}
-  <div className="absolute inset-0 -z-10">
+  <div className="absolute inset-0 z-0">
     <div className="slideshow">
       <img src="/bg1.jpg" />
       <img src="/bg2.jpg" />
@@ -523,7 +523,7 @@ function RiadhPackHome() {
     </div>
 
     {/* Overlay for readability */}
-    <div className="absolute inset-0 bg-black/30"></div>
+    <div className="absolute inset-0 bg-white/80"></div>
   </div>
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
