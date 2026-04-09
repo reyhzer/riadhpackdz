@@ -35,7 +35,7 @@ Date : ${new Date().toLocaleString('fr-DZ')}
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
         personalizations: [
-          { to: [{ email: "commercial@riadhpack.com", name: "Riadh Pack Commercial" }] }
+          { to: [{ email: "commercial@riadhpack.com", name: "Riadh Pack" }] }
         ],
         from: {
           email: "no-reply@riadhpack.com",
@@ -58,11 +58,18 @@ Date : ${new Date().toLocaleString('fr-DZ')}
       );
     } else {
       return new Response(
-        JSON.stringify({ error: "Erreur d'envoi" }),
+        JSON.stringify({ error: "Erreur d'envoi du mail" }),
         { status: 500, headers: { "Content-Type": "application/json" } }
       );
     }
   } catch (err) {
+    console.error("Contact form error:", err);
+    return new Response(
+      JSON.stringify({ error: "Une erreur est survenue" }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
+  }
+};  } catch (err) {
     console.error(err);
     return new Response(
       JSON.stringify({ error: "Une erreur est survenue" }),
