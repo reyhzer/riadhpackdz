@@ -32,48 +32,53 @@ function IconWhatsApp() {
   )
 }
 
-// ─── Formulaire de Contact ─────────────────────────────────────────────────────
-function encode(data: Record<string, string>) {
-  return Object.entries(data)
-    .map(([key, val]) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`)
-    .join('&')
-}
-
+// ─── Formulaire de Contact (Cloudflare Functions) ─────────────────────────────
 function ContactForm() {
   const [fields, setFields] = useState({
-    name: '',        // Nom complet
+    name: '',
     phone: '',
     email: '',
     message: ''
-  })
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFields({ ...fields, [e.target.name]: e.target.value })
-  }
+    setFields({ ...fields, [e.target.name]: e.target.value });
+    setError('');
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
+    setError('');
 
     try {
-      await fetch('/', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({
-          'form-name': 'contact',
-          ...fields
+        body: new URLSearchParams({
+          name: fields.name,
+          phone: fields.phone,
+          email: fields.email,
+          message: fields.message,
         }),
-      })
+      });
 
-      setSubmitted(true)
-    } catch (error) {
-      alert("Une erreur est survenue. Veuillez réessayer.")
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setSubmitted(true);
+      } else {
+        setError(result.error || "Une erreur est survenue lors de l'envoi.");
+      }
+    } catch (err) {
+      setError("Impossible d'envoyer le message. Vérifiez votre connexion internet.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   if (submitted) {
     return (
@@ -86,19 +91,11 @@ function ContactForm() {
         <h3 className="text-2xl font-bold mb-2 text-white">Message envoyé avec succès !</h3>
         <p className="text-gray-400">Merci ! Nous vous contacterons rapidement sur <span className="text-red-400">commercial@riadhpack.com</span></p>
       </div>
-    )
+    );
   }
 
   return (
-    <form 
-      name="contact" 
-      method="POST" 
-      data-netlify="true"
-      onSubmit={handleSubmit} 
-      className="space-y-6"
-    >
-      <input type="hidden" name="form-name" value="contact" />
-
+    <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <label className="block text-sm font-semibold text-gray-300 mb-2">Nom complet *</label>
         <input 
@@ -120,53 +117,7 @@ function ContactForm() {
             name="phone" 
             required 
             value={fields.phone} 
-            onChange={handleChange}
-            placeholder="+213 560 04 25 26"
-            className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-semibold text-gray-300 mb-2">Adresse email *</label>
-          <input 
-            type="email" 
-            name="email" 
-            required 
-            value={fields.email} 
-            onChange={handleChange}
-            className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none"
-          />
-        </div>
-      </div>
-
-      <div>
-        <label className="block text-sm font-semibold text-gray-300 mb-2">Votre besoin / Demande *</label>
-        <textarea 
-          name="message" 
-          required 
-          rows={6} 
-          value={fields.message} 
-          onChange={handleChange}
-          placeholder="Décrivez votre besoin (quantité, type de sac, impression, dimensions, secteur...)"
-          className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none resize-none"
-        />
-      </div>
-
-      <button 
-        type="submit" 
-        disabled={loading}
-        className="w-full bg-red-600 hover:bg-red-700 py-4 rounded-xl text-white font-bold tracking-widest uppercase transition-all disabled:opacity-70"
-      >
-        {loading ? 'Envoi en cours...' : 'Envoyer la demande'}
-      </button>
-
-      <p className="text-center text-xs text-gray-500">
-        Nous répondrons dans les plus brefs délais à <span className="text-red-400">commercial@riadhpack.com</span>
-      </p>
-    </form>
-  )
-}
-
+            onChange={handleChange
 // ─── Main Component ──────────────────────────────────────────────────────────
 function RiadhPackHome() {
   const [menuOpen, setMenuOpen] = useState(false)
