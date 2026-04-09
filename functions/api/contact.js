@@ -1,12 +1,12 @@
 // functions/api/contact.js
 export async function onRequestPost({ request }) {
   try {
-    const formData = await request.formData();
+   const data = await request.json();
 
-    const name = formData.get('name')?.toString().trim() || '';
-    const phone = formData.get('phone')?.toString().trim() || '';
-    const email = formData.get('email')?.toString().trim() || '';
-    const message = formData.get('message')?.toString().trim() || '';
+const name = data.name?.trim() || '';
+const phone = data.phone?.trim() || '';
+const email = data.email?.trim() || '';
+const message = data.message?.trim() || '';
 
     if (!name || !phone || !email || !message) {
       return new Response(JSON.stringify({ error: "Tous les champs sont obligatoires" }), {
