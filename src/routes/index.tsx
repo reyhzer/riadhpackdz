@@ -376,7 +376,22 @@ function RiadhPackHome() {
           </div>
         </div>
       </section>
+      {/* CONTACT SECTION */}
+      <section id="contact" className="py-28 bg-[#0A0A0A]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="text-red-400 text-sm tracking-widest uppercase mb-3">CONTACTEZ-NOUS</p>
+            <h2 className="text-white text-5xl font-bold mb-4">Demandez un devis</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.
+            </p>
+          </div>
 
+          <div className="max-w-2xl mx-auto">
+            <ContactForm />
+          </div>
+        </div>
+      </section>
       {/* Footer */}
       <footer className="bg-black text-white pt-16 pb-12">
         <div className="max-w-7xl mx-auto px-6">
