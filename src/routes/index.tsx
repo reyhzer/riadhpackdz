@@ -117,7 +117,54 @@ function ContactForm() {
             name="phone" 
             required 
             value={fields.phone} 
-            onChange={handleChange
+            onChange={handleChange}
+            placeholder="+213 560 04 25 26"
+            className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold text-gray-300 mb-2">Adresse email *</label>
+          <input 
+            type="email" 
+            name="email" 
+            required 
+            value={fields.email} 
+            onChange={handleChange}
+            className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label className="block text-sm font-semibold text-gray-300 mb-2">Votre besoin / Demande *</label>
+        <textarea 
+          name="message" 
+          required 
+          rows={6} 
+          value={fields.message} 
+          onChange={handleChange}
+          placeholder="Décrivez votre besoin (quantité, type de sac, impression, dimensions...)"
+          className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none resize-none"
+        />
+      </div>
+
+      {error && <p className="text-red-500 text-sm text-center font-medium">{error}</p>}
+
+      <button 
+        type="submit" 
+        disabled={loading}
+        className="w-full bg-red-600 hover:bg-red-700 py-4 rounded-xl text-white font-bold tracking-widest uppercase transition-all disabled:opacity-70"
+      >
+        {loading ? 'Envoi en cours...' : 'Envoyer la demande'}
+      </button>
+
+      <p className="text-center text-xs text-gray-500">
+        Nous répondrons dans les plus brefs délais à commercial@riadhpack.com
+      </p>
+    </form>
+  );
+}
 // ─── Main Component ──────────────────────────────────────────────────────────
 function RiadhPackHome() {
   const [menuOpen, setMenuOpen] = useState(false)
