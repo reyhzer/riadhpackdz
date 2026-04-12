@@ -104,7 +104,48 @@ function ContactForm() {
     </form>
   );
 }
+function RockstarSliderSection() {
+  const items = [
+    "/bg1.jpg",
+    "/bg2.jpg",
+    "/bg3.jpg",
+    "/bg4.jpg",
+    "/bg5.jpg",
+  ];
 
+  return (
+    <section className="relative py-28 bg-black overflow-hidden">
+      
+      <div className="text-center mb-16 relative z-20">
+        <p className="text-red-400 text-sm tracking-widest uppercase mb-3">
+          GALERIE
+        </p>
+        <h2 className="text-white text-5xl font-bold">
+          Notre Production
+        </h2>
+      </div>
+
+      <div className="absolute inset-0 bg-black/70 z-10 pointer-events-none" />
+
+      <div className="absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-black to-transparent z-20" />
+      <div className="absolute right-0 top-0 w-40 h-full bg-gradient-to-l from-black to-transparent z-20" />
+
+      <div className="flex gap-8 w-max animate-scroll">
+        {[...items, ...items].map((src, i) => (
+          <div
+            key={i}
+            className="w-[300px] h-[420px] flex-shrink-0 rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800"
+          >
+            <img
+              src={src}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
 function RiadhPackHome() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -262,7 +303,7 @@ function RiadhPackHome() {
           </div>
         </div>
       </section>
-
+<RockstarSliderSection />
       {/* LIGHTBOX */}
       {selectedImage && (
         <div className="fixed inset-0 bg-black/95 z-[2000] flex items-center justify-center p-4" onClick={closeLightbox}>
