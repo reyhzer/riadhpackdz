@@ -177,7 +177,7 @@ function RiadhPackHome() {
   ]
 
   const products = [
-    { icon: <IconBag />, title: 'Sacs tissés en polypropylène', desc: 'Sacs standard haute résistance pour charges lourdes.', use: 'Tous secteurs industriels', image: 'SAC_PP.png"' },
+    { icon: <IconBag />, title: 'Sacs tissés en polypropylène', desc: 'Sacs standard haute résistance pour charges lourdes.', use: 'Tous secteurs industriels', image: 'SAC_PP.png' },
     { icon: <IconWheat />, title: 'Sacs agricoles', desc: 'Pour graines, engrais, compost. Résistants aux UV et humidité.', use: 'Agriculture & Élevage', image: 'SAC_AGRICOLE.png' },
     { icon: <IconFood />, title: 'Sacs alimentaires', desc: 'Pour farine, sucre, semoule. Conformes aux normes alimentaires.', use: 'Agroalimentaire', image: 'SAC_ALIM.png' },
     { icon: <IconValve />, title: 'Sacs à valve', desc: 'Pour ciment, chaux, plâtre et poudres industrielles.', use: 'BTP & Industrie', image: 'SAC_VALVE.png' },
@@ -351,7 +351,7 @@ function RiadhPackHome() {
       </section>
 
 
-      {/* PRODUCTS */}
+            {/* PRODUCTS - IMPROVED VERSION */}
       <section id="produits" className="py-24 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -361,17 +361,31 @@ function RiadhPackHome() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product, index) => (
-              <div key={index} className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden group hover:border-red-600/50 transition-all">
-                <div className="h-64 overflow-hidden">
-                  <img src={product.image} alt={product.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              <div 
+                key={index} 
+                className="group bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-red-600/50 transition-all duration-300 hover:-translate-y-2"
+              >
+                {/* BIGGER & BETTER IMAGE */}
+                <div className="h-72 bg-zinc-950 flex items-center justify-center p-8 overflow-hidden">
+                  <img 
+                    src={product.image} 
+                    alt={product.title} 
+                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" 
+                  />
                 </div>
+
+                {/* CONTENT */}
                 <div className="p-8">
                   <div className="flex items-center gap-4 mb-5">
-                    <div className="text-red-500">{product.icon}</div>
-                    <h3 className="text-white text-xl font-bold">{product.title}</h3>
+                    <div className="text-red-500 text-3xl">{product.icon}</div>
+                    <h3 className="text-white text-2xl font-bold leading-tight">{product.title}</h3>
                   </div>
-                  <p className="text-gray-400 leading-relaxed">{product.desc}</p>
-                  <p className="text-red-400 text-xs tracking-widest mt-6 uppercase">{product.use}</p>
+                  <p className="text-gray-400 leading-relaxed text-[17px] mb-6">
+                    {product.desc}
+                  </p>
+                  <p className="text-red-400 text-sm font-semibold tracking-widest uppercase">
+                    {product.use}
+                  </p>
                 </div>
               </div>
             ))}
