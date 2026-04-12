@@ -263,60 +263,17 @@ function RiadhPackHome() {
         </div>
       </section>
 
-           {/* IMPROVED LIGHTBOX - Shows specific picture of each product */}
-      {lightboxOpen && (
-        <div 
-          className="fixed inset-0 bg-black/95 z-[2000] flex items-center justify-center p-4" 
-          onClick={closeLightbox}
-        >
-          <div 
-            className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center"
-            onClick={e => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button 
-              onClick={closeLightbox}
-              className="absolute -top-14 right-4 text-white text-5xl hover:text-red-500 z-10"
-            >
-              ✕
-            </button>
-
-            {/* Big Image - Specific to the clicked product */}
-            <div className="bg-zinc-950 p-6 rounded-2xl">
-              <img 
-                src={products[currentIndex].image} 
-                alt={products[currentIndex].title}
-                className="max-h-[75vh] w-auto max-w-full object-contain rounded-xl" 
-              />
-            </div>
-
-            {/* Product Title */}
-            <p className="text-white text-2xl font-bold mt-6 text-center px-4">
-              {products[currentIndex].title}
-            </p>
-
-            {/* Navigation Arrows */}
-            <button 
-              onClick={goToPrevious}
-              className="absolute left-6 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-red-600 text-white w-14 h-14 flex items-center justify-center rounded-full text-4xl transition-all"
-            >
-              ←
-            </button>
-
-            <button 
-              onClick={goToNext}
-              className="absolute right-6 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-red-600 text-white w-14 h-14 flex items-center justify-center rounded-full text-4xl transition-all"
-            >
-              →
-            </button>
-
-            {/* Counter */}
-            <div className="absolute bottom-8 bg-black/70 px-5 py-2 rounded-full text-white text-sm">
-              {currentIndex + 1} / {products.length}
-            </div>
+      {/* LIGHTBOX */}
+      {selectedImage && (
+        <div className="fixed inset-0 bg-black/95 z-[2000] flex items-center justify-center p-4" onClick={closeLightbox}>
+          <div className="relative max-w-5xl w-full" onClick={e => e.stopPropagation()}>
+            <button onClick={closeLightbox} className="absolute -top-12 right-4 text-white text-5xl hover:text-red-500 transition-colors">✕</button>
+            <img src={selectedImage} alt={selectedTitle} className="max-h-[88vh] w-full object-contain rounded-2xl shadow-2xl" />
+            <p className="text-center text-white mt-6 text-2xl font-medium">{selectedTitle}</p>
           </div>
         </div>
       )}
+
       {/* CONTACT */}
       <section id="contact" className="py-28 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-6">
