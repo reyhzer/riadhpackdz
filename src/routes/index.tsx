@@ -307,27 +307,49 @@ function RiadhPackHome() {
       </section>
 
       {/* À PROPOS */}
-     <section class="min-h-screen flex items-center py-20 px-6">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+    <section id="apropos" className="relative py-28 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="slideshow">
+            <img src="/bg1.jpg" alt="" />
+            <img src="/bg2.jpg" alt="" />
+            <img src="/bg3.jpg" alt="" />
+            <img src="/bg4.jpg" alt="" />
+            <img src="/bg5.jpg" alt="" />
+            <img src="/bg6.jpg" alt="" />
+          </div>
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
 
-    <div>
-      <h1 class="text-4xl font-bold mb-4">
-        Un fabricant algérien de confiance
-      </h1>
-      <p class="text-gray-600 mb-4">
-        Riadh Pack est spécialisée dans la fabrication de sacs en polypropylène.
-      </p>
-      <p class="text-gray-500">
-        Production locale avec qualité industrielle.
-      </p>
-    </div>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid md:grid-cols-2 gap-20 items-center">
+            <div className="space-y-10">
+              <div>
+                <p className="text-red-400 text-sm tracking-[0.2em] uppercase font-semibold mb-4">À PROPOS DE RIADH PACK</p>
+                <h2 className="text-white text-5xl md:text-6xl font-bold leading-none">Un fabricant algérien<br />de confiance</h2>
+              </div>
+              <div className="max-w-lg text-white/90 text-lg leading-relaxed space-y-6">
+                <p>Riadh Pack est spécialisée dans la fabrication de sacs en polypropylène tissé pour les secteurs agricole, alimentaire et industriel.</p>
+                <p>Implantés à Relizane dans la zone industrielle Belhacel, nous combinons technologie moderne et savoir-faire local pour offrir des solutions de haute qualité à des prix compétitifs.</p>
+              </div>
+              <div className="flex gap-8">
+                <div className="flex items-center gap-2"><span className="text-red-400 text-2xl">★</span> <span className="text-white">Qualité industrielle</span></div>
+                <div className="flex items-center gap-2"><span className="text-red-400 text-2xl">★</span> <span className="text-white">Production locale</span></div>
+              </div>
+            </div>
 
-    <div>
-      <img src="public/riadh pack 1.png" class="w-full rounded-xl" />
-    </div>
+            <div className="relative">
+              <div className="aspect-video bg-zinc-900 rounded-3xl overflow-hidden shadow-2xl">
+                <img src="riadh pack 1.png" alt="Riadh Pack Usine" className="w-full h-full object-cover" />
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-white text-black px-8 py-5 rounded-2xl shadow-xl">
+                <div className="font-bold text-2xl">Relizane</div>
+                <div className="text-sm text-gray-600">Zone Industrielle Belhacel</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  </div>
-</section>
 
       {/* PRODUCTS */}
       <section id="produits" className="py-24 bg-[#0A0A0A]">
