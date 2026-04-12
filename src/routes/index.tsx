@@ -192,7 +192,7 @@ function RiadhPackHome() {
 
   const products = [
     { icon: <IconBag />, title: 'Sacs tissés en polypropylène', desc: 'Sacs standard haute résistance pour charges lourdes.', use: 'Tous secteurs industriels', image: '/SAC_PP.png' },
-    { icon: <IconWheat />, title: 'Rouleaux de polypropylène tissé', desc: 'Pour graines, engrais, compost. Résistants aux UV et humidité.', use: 'Agriculture & Élevage', image: '/ROUL.jpg' },
+    { icon: <IconWheat />, title: 'Rouleaux de polypropylène tissé', desc: 'Pour graines, engrais, compost. Résistants aux UV et humidité.', use: 'Agriculture & Élevage', image: '/ROUL.JPG' },
     { icon: <IconFood />, title: 'Sacs tissés laminés en Polypropylène', desc: 'Pour farine, sucre, semoule. Conformes aux normes alimentaires.', use: 'Agroalimentaire', image: '/SAC_ALIM.png' },
     { icon: <IconValve />, title: 'Sacs à valve', desc: 'Pour ciment, chaux, plâtre et poudres industrielles.', use: 'BTP & Industrie', image: '/SAC_VALVE.png' },
     { icon: <IconCustom />, title: 'Sacs personnalisés', desc: 'Impression flexo jusqu\'à 6 couleurs avec votre logo.', use: 'Marques & Exportateurs', image: '/SAC_CUSTOM.png' },
