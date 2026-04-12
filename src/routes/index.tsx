@@ -62,3 +62,345 @@ function ContactForm() {
           </svg>
         </div>
         <h3 className="text-2xl font-bold mb-2 text-white">Message envoyé avec succès !</h3>
+        <p className="text-gray-400">Merci ! Nous vous contacterons rapidement.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div>
+        <label className="block text-sm font-semibold text-gray-300 mb-2">Nom complet *</label>
+        <input type="text" name="name" required value={fields.name} onChange={handleChange}
+          className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none" placeholder="Ex: Ahmed Benali" />
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label className="block text-sm font-semibold text-gray-300 mb-2">Numéro de téléphone *</label>
+          <input type="tel" name="phone" required value={fields.phone} onChange={handleChange}
+            className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none" placeholder="+213 560 04 25 26" />
+        </div>
+        <div>
+          <label className="block text-sm font-semibold text-gray-300 mb-2">Adresse email *</label>
+          <input type="email" name="email" required value={fields.email} onChange={handleChange}
+            className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none" />
+        </div>
+      </div>
+
+      <div>
+        <label className="block text-sm font-semibold text-gray-300 mb-2">Votre besoin / Demande *</label>
+        <textarea name="message" required rows={6} value={fields.message} onChange={handleChange}
+          className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none resize-none"
+          placeholder="Décrivez votre besoin (quantité, type de sac, impression...)" />
+      </div>
+
+      {error && <p className="text-red-500 text-sm text-center font-medium">{error}</p>}
+
+      <button type="submit" disabled={loading}
+        className="w-full bg-red-600 hover:bg-red-700 py-4 rounded-xl text-white font-bold tracking-widest uppercase transition-all disabled:opacity-70">
+        {loading ? 'Envoi en cours...' : 'Envoyer la demande'}
+      </button>
+    </form>
+  );
+}
+function RockstarSliderSection() {
+  const row1 = [
+    "/bg1.jpg",
+    "/bg2.jpg",
+    "/bg3.jpg",
+    "/bg4.jpg",
+    "/bg5.jpg",
+  ];
+
+  const row2 = [
+    "/bg6.jpg",
+    "/bg1.jpg",
+    "/bg2.jpg",
+    "/bg3.jpg",
+    "/bg4.jpg",
+  ];
+
+  return (
+    <section className="relative py-28 bg-black overflow-hidden">
+
+      {/* Title */}
+      <div className="text-center mb-16 relative z-20">
+        <p className="text-red-400 text-sm tracking-widest uppercase mb-3">
+          GALERIE
+        </p>
+        <h2 className="text-white text-5xl font-bold">
+          Notre Production
+        </h2>
+      </div>
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/70 z-10 pointer-events-none" />
+
+      {/* Edge fade */}
+      <div className="absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-black to-transparent z-20" />
+      <div className="absolute right-0 top-0 w-40 h-full bg-gradient-to-l from-black to-transparent z-20" />
+
+      {/* SLIDER */}
+      <div className="space-y-8 relative z-20">
+
+        {/* ROW 1 (main) */}
+        <div className="flex gap-8 w-max animate-scroll">
+          {[...row1, ...row1].map((src, i) => (
+            <div
+              key={i}
+              className="w-[320px] h-[440px] flex-shrink-0 rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-2xl"
+            >
+              <img
+                src={src}
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* ROW 2 (background) */}
+        <div className="flex gap-8 w-max animate-scroll-reverse opacity-40 blur-[1px]">
+          {[...row2, ...row2].map((src, i) => (
+            <div
+              key={i}
+              className="w-[280px] h-[400px] flex-shrink-0 rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800"
+            >
+              <img
+                src={src}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
+function RiadhPackHome() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedTitle, setSelectedTitle] = useState('');
+
+  const openLightbox = (image: string, title: string) => {
+    setSelectedImage(image);
+    setSelectedTitle(title);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setSelectedImage(null);
+    setSelectedTitle('');
+    document.body.style.overflow = 'visible';
+  };
+
+  const navLinks = [
+    { href: '#accueil', label: 'Accueil' },
+    { href: '#produits', label: 'Produits' },
+    { href: '#apropos', label: 'À propos' },
+    { href: '#contact', label: 'Contact' },
+  ];
+
+  const products = [
+    { icon: <IconBag />, title: 'Sacs tissés en polypropylène', desc: 'Sacs standard haute résistance pour charges lourdes.', use: 'Tous secteurs industriels', image: '/SAC_PP.png' },
+    { icon: <IconWheat />, title: 'Sacs agricoles', desc: 'Pour graines, engrais, compost. Résistants aux UV et humidité.', use: 'Agriculture & Élevage', image: '/SAC_AGRICOLE.png' },
+    { icon: <IconFood />, title: 'Sacs alimentaires', desc: 'Pour farine, sucre, semoule. Conformes aux normes alimentaires.', use: 'Agroalimentaire', image: '/SAC_ALIM.png' },
+    { icon: <IconValve />, title: 'Sacs à valve', desc: 'Pour ciment, chaux, plâtre et poudres industrielles.', use: 'BTP & Industrie', image: '/SAC_VALVE.png' },
+    { icon: <IconCustom />, title: 'Sacs personnalisés', desc: 'Impression flexo jusqu\'à 6 couleurs avec votre logo.', use: 'Marques & Exportateurs', image: '/SAC_CUSTOM.png' },
+    { icon: <IconScale />, title: 'Commandes en gros', desc: 'Grande capacité de production pour volumes importants.', use: 'Grossistes & Industriels', image: '/COM_GROS.png' },
+  ];
+
+  return (
+    <div className="min-h-screen bg-black text-white" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+
+      {/* HEADER */}
+      <header className="fixed top-0 left-0 right-0 z-[1000] bg-black/95 backdrop-blur-lg border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+          <a href="#accueil">
+            <img src="/logo_riadhpack.png" alt="Riadh Pack" className="h-16" />
+          </a>
+
+          <nav className="hidden md:flex items-center gap-10">
+            {navLinks.map(link => (
+              <a key={link.href} href={link.href} className="text-white/80 hover:text-white text-sm font-semibold tracking-widest uppercase">
+                {link.label}
+              </a>
+            ))}
+            <a href="#contact" className="bg-red-600 hover:bg-red-700 px-8 py-3 rounded-xl text-xs font-bold uppercase">
+              DEMANDER UN DEVIS
+            </a>
+          </nav>
+
+          <button className="md:hidden text-white text-3xl" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? '✕' : '☰'}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`md:hidden absolute top-full left-0 w-full bg-black border-t border-white/10 transition-all duration-300 overflow-hidden z-[999] ${menuOpen ? 'max-h-[400px] opacity-100 py-6' : 'max-h-0 opacity-0 py-0'}`}>
+          <div className="flex flex-col items-center gap-6">
+            {navLinks.map(link => (
+              <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="text-lg text-white">
+                {link.label}
+              </a>
+            ))}
+            <a href="#contact" onClick={() => setMenuOpen(false)} className="bg-red-600 px-6 py-3 rounded-xl font-bold">
+              DEMANDER UN DEVIS
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <section id="accueil" className="relative flex items-center justify-center min-h-screen pt-20 z-0">
+        <div className="absolute inset-0 overflow-hidden z-0">
+          <video autoPlay muted loop playsInline className="w-full h-full object-cover pointer-events-none">
+            <source src="/video.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/90 pointer-events-none" />
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+          <p className="text-red-400 text-sm tracking-[3px] uppercase mb-6 font-semibold">FABRICANT ALGÉRIEN • DEPUIS 2015</p>
+          <h1 className="text-white text-5xl md:text-7xl font-bold mb-6">EMBALLAGE INDUSTRIEL<br />D'EXCELLENCE</h1>
+          <p className="text-gray-300 text-lg md:text-xl mb-10">Sacs en polypropylène tissé de haute qualité pour l'agriculture, l'agroalimentaire et l'industrie.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#contact" className="bg-white text-black px-10 py-4 font-bold rounded-xl">OBTENIR UN DEVIS</a>
+            <a href="https://wa.me/213560042526" className="border border-white px-10 py-4 rounded-xl">WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
+      {/* À PROPOS */}
+      <section id="apropos" className="relative py-28 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="slideshow">
+            <img src="/bg1.jpg" alt="" />
+            <img src="/bg2.jpg" alt="" />
+            <img src="/bg3.jpg" alt="" />
+            <img src="/bg4.jpg" alt="" />
+            <img src="/bg5.jpg" alt="" />
+            <img src="/bg6.jpg" alt="" />
+          </div>
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid md:grid-cols-2 gap-20 items-center">
+            <div className="space-y-10">
+              <div>
+                <p className="text-red-400 text-sm tracking-[0.2em] uppercase font-semibold mb-4">À PROPOS DE RIADH PACK</p>
+                <h2 className="text-white text-5xl md:text-6xl font-bold leading-none">Un fabricant algérien<br />de confiance</h2>
+              </div>
+              <div className="max-w-lg text-white/90 text-lg leading-relaxed space-y-6">
+                <p>Riadh Pack est spécialisée dans la fabrication de sacs en polypropylène tissé pour les secteurs agricole, alimentaire et industriel.</p>
+                <p>Implantés à Relizane dans la zone industrielle Belhacel, nous combinons technologie moderne et savoir-faire local pour offrir des solutions de haute qualité à des prix compétitifs.</p>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="aspect-video bg-zinc-900 rounded-3xl overflow-hidden shadow-2xl">
+                <img src="/riadh pack 1.png" alt="Riadh Pack Usine" className="w-full h-full object-cover" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PRODUCTS WITH LIGHTBOX */}
+      <section id="produits" className="py-24 bg-[#0A0A0A]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="text-red-400 text-sm tracking-widest uppercase mb-3">NOTRE GAMME</p>
+            <h2 className="text-white text-5xl font-bold">Nos Produits</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product, index) => (
+              <div key={index} className="group bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-red-600/50 transition-all duration-300 hover:-translate-y-2">
+                <div className="h-72 bg-zinc-950 flex items-center justify-center p-8 overflow-hidden cursor-pointer" onClick={() => openLightbox(product.image, product.title)}>
+                  <img src={product.image} alt={product.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" />
+                </div>
+                <div className="p-8">
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="text-red-500 text-3xl">{product.icon}</div>
+                    <h3 className="text-white text-2xl font-bold leading-tight">{product.title}</h3>
+                  </div>
+                  <p className="text-gray-400 leading-relaxed text-[17px] mb-6">{product.desc}</p>
+                  <p className="text-red-400 text-sm font-semibold tracking-widest uppercase">{product.use}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+<RockstarSliderSection />
+      {/* LIGHTBOX */}
+      {selectedImage && (
+        <div className="fixed inset-0 bg-black/95 z-[2000] flex items-center justify-center p-4" onClick={closeLightbox}>
+          <div className="relative max-w-5xl w-full" onClick={e => e.stopPropagation()}>
+            <button onClick={closeLightbox} className="absolute -top-12 right-4 text-white text-5xl hover:text-red-500 transition-colors">✕</button>
+            <img src={selectedImage} alt={selectedTitle} className="max-h-[88vh] w-full object-contain rounded-2xl shadow-2xl" />
+            <p className="text-center text-white mt-6 text-2xl font-medium">{selectedTitle}</p>
+          </div>
+        </div>
+      )}
+
+      {/* CONTACT */}
+      <section id="contact" className="py-28 bg-[#0A0A0A]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="text-red-400 text-sm tracking-widest uppercase mb-3">CONTACTEZ-NOUS</p>
+            <h2 className="text-white text-5xl font-bold mb-4">Demandez un devis</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</p>
+          </div>
+          <div className="max-w-2xl mx-auto">
+            <ContactForm />
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-black text-white pt-16 pb-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-3 gap-12">
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <img src="/logo_riadhpack.png" alt="Riadh Pack" className="h-12 w-auto" />
+                <div className="text-2xl font-bold tracking-wider">RIADH <span className="font-light text-gray-400">PACK</span></div>
+              </div>
+              <p className="text-gray-400">Fabricant algérien de sacs en polypropylène tissé de haute qualité.</p>
+            </div>
+
+            <div>
+              <h4 className="font-bold uppercase tracking-widest text-sm mb-4">Liens Rapides</h4>
+              <ul className="space-y-3 text-gray-400">
+                {navLinks.map(l => <li key={l.href}><a href={l.href} className="hover:text-white">{l.label}</a></li>)}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-bold uppercase tracking-widest text-sm mb-4">Contact</h4>
+              <p className="text-gray-400">
+                +213 560 04 25 26<br />
+                commercial@riadhpack.com<br />
+                Zone Industrielle Belhacel, Relizane
+              </p>
+            </div>
+          </div>
+
+          <div className="text-center text-gray-500 text-xs mt-16">
+            © 2026 Riadh Pack - Tous droits réservés
+          </div>
+        </div>
+      </footer>
+
+      {/* Floating WhatsApp */}
+      <a href="https://wa.me/213560042526" target="_blank" rel="noopener noreferrer" 
+         className="fixed bottom-6 right-6 bg-[#25D366] w-16 h-16 rounded-full flex items-center justify-center shadow-2xl z-50 hover:scale-110 transition-transform">
+        <IconWhatsApp />
+      </a>
+    </div>
+  )
+}
