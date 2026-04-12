@@ -351,7 +351,7 @@ function RiadhPackHome() {
       </section>
 
 
-            {/* PRODUCTS - IMPROVED VERSION */}
+                 {/* PRODUCTS - WITH LIGHTBOX */}
       <section id="produits" className="py-24 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -365,8 +365,11 @@ function RiadhPackHome() {
                 key={index} 
                 className="group bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-red-600/50 transition-all duration-300 hover:-translate-y-2"
               >
-                {/* BIGGER & BETTER IMAGE */}
-                <div className="h-72 bg-zinc-950 flex items-center justify-center p-8 overflow-hidden">
+                {/* CLICKABLE IMAGE */}
+                <div 
+                  className="h-72 bg-zinc-950 flex items-center justify-center p-8 overflow-hidden cursor-pointer"
+                  onClick={() => openLightbox(product.image, product.title)}
+                >
                   <img 
                     src={product.image} 
                     alt={product.title} 
@@ -392,6 +395,36 @@ function RiadhPackHome() {
           </div>
         </div>
       </section>
+
+      {/* LIGHTBOX / MODAL */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-black/90 z-[2000] flex items-center justify-center p-4"
+          onClick={closeLightbox}
+        >
+          <div 
+            className="relative max-w-5xl w-full"
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              onClick={closeLightbox}
+              className="absolute -top-12 right-0 text-white text-4xl hover:text-red-500 transition-colors"
+            >
+              ✕
+            </button>
+            
+            <img 
+              src={selectedImage} 
+              alt={selectedTitle}
+              className="max-h-[85vh] w-full object-contain rounded-2xl shadow-2xl" 
+            />
+            
+            <p className="text-center text-white mt-6 text-xl font-medium">
+              {selectedTitle}
+            </p>
+          </div>
+        </div>
+      )}
       {/* CONTACT SECTION */}
       <section id="contact" className="py-28 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-6">
