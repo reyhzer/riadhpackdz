@@ -105,21 +105,9 @@ function ContactForm() {
   );
 }
 function RockstarSliderSection() {
-  const allImages = Array.from({ length: 24 }, (_, i) => `/bg${i + 1}.jpg`);
+  const images = Array.from({ length: 24 }, (_, i) => `/bg${i + 1}.jpg`);
 
-  const row1 = allImages.slice(0, 24);   // bg1 → bg24
-  const row2 = allImages.slice(12, 24);  // bg13 → bg24
-
-  // for smooth infinite scroll (important)
-  const loopRow1 = [...row1, ...row1];
-  const loopRow2 = [...row2, ...row2];
-
-  return (
-    <div>
-      {/* use loopRow1 and loopRow2 */}
-    </div>
-  );
-}
+  const loopImages = [...images, ...images]; // important for infinite loop
 
   return (
     <section className="relative py-28 bg-black overflow-hidden">
@@ -134,22 +122,19 @@ function RockstarSliderSection() {
         </h2>
       </div>
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/70 z-10 pointer-events-none" />
-
-      {/* Edge fade */}
+      {/* Edge fade (optional nice effect) */}
       <div className="absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-black to-transparent z-20" />
       <div className="absolute right-0 top-0 w-40 h-full bg-gradient-to-l from-black to-transparent z-20" />
 
       {/* SLIDER */}
-      <div className="space-y-8 relative z-20">
+      <div className="space-y-10 relative z-10">
 
-        {/* ROW 1 (main) */}
+        {/* ROW 1 */}
         <div className="flex gap-8 w-max animate-scroll">
-          {[...row1, ...row1].map((src, i) => (
+          {loopImages.map((src, i) => (
             <div
               key={i}
-              className="w-[320px] h-[440px] flex-shrink-0 rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-2xl"
+              className="w-[320px] h-[440px] flex-shrink-0 rounded-3xl overflow-hidden"
             >
               <img
                 src={src}
@@ -159,12 +144,12 @@ function RockstarSliderSection() {
           ))}
         </div>
 
-        {/* ROW 2 (background) */}
-        <div className="flex gap-8 w-max animate-scroll-reverse opacity-40 blur-[1px]">
-          {[...row2, ...row2].map((src, i) => (
+        {/* ROW 2 (reverse direction) */}
+        <div className="flex gap-8 w-max animate-scroll-reverse">
+          {loopImages.map((src, i) => (
             <div
               key={i}
-              className="w-[280px] h-[400px] flex-shrink-0 rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800"
+              className="w-[300px] h-[420px] flex-shrink-0 rounded-3xl overflow-hidden"
             >
               <img
                 src={src}
