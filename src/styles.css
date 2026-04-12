@@ -129,3 +129,22 @@ code {
 .animate-scroll {
   animation: scroll 40s linear infinite;
 }
+
+@keyframes scroll-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-reverse {
+  animation: scroll-reverse 50s linear infinite;
+}
+
+/* Optional: pause on hover */
+.animate-scroll:hover,
+.animate-scroll-reverse:hover {
+  animation-play-state: paused;
+}
