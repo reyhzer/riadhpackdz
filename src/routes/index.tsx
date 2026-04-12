@@ -106,8 +106,7 @@ function ContactForm() {
 }
 function RockstarSliderSection() {
   const images = Array.from({ length: 24 }, (_, i) => `/bg${i + 1}.jpg`);
-
-  const loopImages = [...images, ...images]; // important for infinite loop
+  const loopImages = [...images, ...images]; // infinite loop
 
   return (
     <section className="relative py-28 bg-black overflow-hidden">
@@ -122,9 +121,11 @@ function RockstarSliderSection() {
         </h2>
       </div>
 
-      {/* Edge fade (optional nice effect) */}
-      <div className="absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-black to-transparent z-20" />
-      <div className="absolute right-0 top-0 w-40 h-full bg-gradient-to-l from-black to-transparent z-20" />
+      {/* LEFT FADE */}
+      <div className="pointer-events-none absolute left-0 top-0 w-52 h-full bg-gradient-to-r from-gray-900/90 via-gray-900/60 to-transparent z-20" />
+
+      {/* RIGHT FADE */}
+      <div className="pointer-events-none absolute right-0 top-0 w-52 h-full bg-gradient-to-l from-gray-900/90 via-gray-900/60 to-transparent z-20" />
 
       {/* SLIDER */}
       <div className="space-y-10 relative z-10">
@@ -139,12 +140,13 @@ function RockstarSliderSection() {
               <img
                 src={src}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                alt=""
               />
             </div>
           ))}
         </div>
 
-        {/* ROW 2 (reverse direction) */}
+        {/* ROW 2 (reverse) */}
         <div className="flex gap-8 w-max animate-scroll-reverse">
           {loopImages.map((src, i) => (
             <div
@@ -154,6 +156,7 @@ function RockstarSliderSection() {
               <img
                 src={src}
                 className="w-full h-full object-cover"
+                alt=""
               />
             </div>
           ))}
@@ -189,8 +192,8 @@ function RiadhPackHome() {
 
   const products = [
     { icon: <IconBag />, title: 'Sacs tissés en polypropylène', desc: 'Sacs standard haute résistance pour charges lourdes.', use: 'Tous secteurs industriels', image: '/SAC_PP.png' },
-    { icon: <IconWheat />, title: 'Sacs agricoles', desc: 'Pour graines, engrais, compost. Résistants aux UV et humidité.', use: 'Agriculture & Élevage', image: '/SAC_AGRICOLE.png' },
-    { icon: <IconFood />, title: 'Sacs alimentaires', desc: 'Pour farine, sucre, semoule. Conformes aux normes alimentaires.', use: 'Agroalimentaire', image: '/SAC_ALIM.png' },
+    { icon: <IconWheat />, title: 'Rouleaux de polypropylène tissé', desc: 'Pour graines, engrais, compost. Résistants aux UV et humidité.', use: 'Agriculture & Élevage', image: '/ROUL.jpg' },
+    { icon: <IconFood />, title: 'Sacs tissés laminés en Polypropylène', desc: 'Pour farine, sucre, semoule. Conformes aux normes alimentaires.', use: 'Agroalimentaire', image: '/SAC_ALIM.png' },
     { icon: <IconValve />, title: 'Sacs à valve', desc: 'Pour ciment, chaux, plâtre et poudres industrielles.', use: 'BTP & Industrie', image: '/SAC_VALVE.png' },
     { icon: <IconCustom />, title: 'Sacs personnalisés', desc: 'Impression flexo jusqu\'à 6 couleurs avec votre logo.', use: 'Marques & Exportateurs', image: '/SAC_CUSTOM.png' },
     { icon: <IconScale />, title: 'Commandes en gros', desc: 'Grande capacité de production pour volumes importants.', use: 'Grossistes & Industriels', image: '/COM_GROS.png' },
