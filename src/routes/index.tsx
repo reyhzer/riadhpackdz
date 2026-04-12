@@ -177,12 +177,12 @@ function RiadhPackHome() {
   ]
 
   const products = [
-    { icon: <IconBag />, title: 'Sacs tissés en polypropylène', desc: 'Sacs standard haute résistance pour charges lourdes.', use: 'Tous secteurs industriels', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80' },
-    { icon: <IconWheat />, title: 'Sacs agricoles', desc: 'Pour graines, engrais, compost. Résistants aux UV et humidité.', use: 'Agriculture & Élevage', image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80' },
-    { icon: <IconFood />, title: 'Sacs alimentaires', desc: 'Pour farine, sucre, semoule. Conformes aux normes alimentaires.', use: 'Agroalimentaire', image: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&q=80' },
-    { icon: <IconValve />, title: 'Sacs à valve', desc: 'Pour ciment, chaux, plâtre et poudres industrielles.', use: 'BTP & Industrie', image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80' },
-    { icon: <IconCustom />, title: 'Sacs personnalisés', desc: 'Impression flexo jusqu\'à 6 couleurs avec votre logo.', use: 'Marques & Exportateurs', image: 'https://images.unsplash.com/photo-1586769852044-692d6e3703f0?w=600&q=80' },
-    { icon: <IconScale />, title: 'Commandes en gros', desc: 'Grande capacité de production pour volumes importants.', use: 'Grossistes & Industriels', image: 'https://images.unsplash.com/photo-1586769852836-bc069f19e1b8?w=600&q=80' },
+    { icon: <IconBag />, title: 'Sacs tissés en polypropylène', desc: 'Sacs standard haute résistance pour charges lourdes.', use: 'Tous secteurs industriels', image: '"/SAC_PP.png"' },
+    { icon: <IconWheat />, title: 'Sacs agricoles', desc: 'Pour graines, engrais, compost. Résistants aux UV et humidité.', use: 'Agriculture & Élevage', image: 'SAC_AGRICOLE.png' },
+    { icon: <IconFood />, title: 'Sacs alimentaires', desc: 'Pour farine, sucre, semoule. Conformes aux normes alimentaires.', use: 'Agroalimentaire', image: 'SAC_ALIM.png' },
+    { icon: <IconValve />, title: 'Sacs à valve', desc: 'Pour ciment, chaux, plâtre et poudres industrielles.', use: 'BTP & Industrie', image: 'SAC_VALVE.png' },
+    { icon: <IconCustom />, title: 'Sacs personnalisés', desc: 'Impression flexo jusqu\'à 6 couleurs avec votre logo.', use: 'Marques & Exportateurs', image: 'SAC_CUSTOM.png' },
+    { icon: <IconScale />, title: 'Commandes en gros', desc: 'Grande capacité de production pour volumes importants.', use: 'Grossistes & Industriels', image: 'COM_GROS.png' },
   ]
 
   return (
