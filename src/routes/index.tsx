@@ -307,44 +307,23 @@ function RiadhPackHome() {
       </section>
 
       {/* À PROPOS */}
-      <section id="apropos" className="py-28 bg-white text-black">
-  <div className="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
+     <section class="min-h-screen flex items-center py-20 px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
 
-    {/* TEXT */}
     <div>
-      <p className="text-red-600 text-sm tracking-widest uppercase mb-4 font-semibold">
-        À PROPOS DE RIADH PACK
-      </p>
-
-      <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+      <h1 class="text-4xl font-bold mb-4">
         Un fabricant algérien de confiance
-      </h2>
-
-      <p className="text-lg text-gray-700 leading-relaxed mb-6">
-        Riadh Pack est spécialisée dans la fabrication de sacs en polypropylène tissé,
-        destinés aux secteurs agricoles, industriels et agroalimentaires.
+      </h1>
+      <p class="text-gray-600 mb-4">
+        Riadh Pack est spécialisée dans la fabrication de sacs en polypropylène.
       </p>
-
-      <p className="text-lg text-gray-600 leading-relaxed mb-8">
-        Grâce à une production locale maîtrisée et une capacité industrielle élevée,
-        nous garantissons qualité, résistance et respect des délais pour toutes vos commandes.
+      <p class="text-gray-500">
+        Production locale avec qualité industrielle.
       </p>
-
-      <a
-        href="#contact"
-        className="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl font-bold uppercase tracking-wider"
-      >
-        Demander un devis
-      </a>
     </div>
 
-    {/* IMAGE */}
-    <div className="relative">
-      <img
-        src="/riadh pack 1.png"
-        alt="Riadh Pack usine"
-        className="w-full h-[500px] object-cover rounded-3xl shadow-2xl"
-      />
+    <div>
+      <img src="public/riadh pack 1.png" class="w-full rounded-xl" />
     </div>
 
   </div>
