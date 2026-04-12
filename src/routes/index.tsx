@@ -105,21 +105,21 @@ function ContactForm() {
   );
 }
 function RockstarSliderSection() {
-  const row1 = [
-    "/bg1.jpg",
-    "/bg2.jpg",
-    "/bg3.jpg",
-    "/bg4.jpg",
-    "/bg5.jpg",
-  ];
+  const allImages = Array.from({ length: 24 }, (_, i) => `/bg${i + 1}.jpg`);
 
-  const row2 = [
-    "/bg6.jpg",
-    "/bg1.jpg",
-    "/bg2.jpg",
-    "/bg3.jpg",
-    "/bg4.jpg",
-  ];
+  const row1 = allImages.slice(0, 24);   // bg1 → bg24
+  const row2 = allImages.slice(12, 24);  // bg13 → bg24
+
+  // for smooth infinite scroll (important)
+  const loopRow1 = [...row1, ...row1];
+  const loopRow2 = [...row2, ...row2];
+
+  return (
+    <div>
+      {/* use loopRow1 and loopRow2 */}
+    </div>
+  );
+}
 
   return (
     <section className="relative py-28 bg-black overflow-hidden">
