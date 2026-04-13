@@ -132,25 +132,20 @@ function RockstarSliderSection() {
           ))}
         </div>
 
-        {/* ROW 2 (slightly faster + reverse direction = depth feel) */}
-        <div className="flex w-max gap-6 animate-scroll-reverse will-change-transform opacity-80"
-          {loopImages.map((src, i) => (
-            <div
-              key={i}
-              className="w-[220px] h-[300px] flex-shrink-0 rounded-2xl overflow-hidden"
-            >
-              <img
-                src={src}
-                className="w-full h-full object-cover scale-110 hover:scale-105 transition duration-700"
-              />
-            </div>
-          ))}
-        </div>
-
-      </div>
-    </section>
-  );
-}
+       {/* ROW 2 (slightly faster + reverse direction = depth feel) */}
+<div className="flex w-max gap-6 animate-scroll-reverse will-change-transform opacity-80">
+  {loopImages.map((src, i) => (
+    <div
+      key={i}
+      className="w-[220px] h-[300px] flex-shrink-0 rounded-2xl overflow-hidden"
+    >
+      <img
+        src={src}
+        className="w-full h-full object-cover scale-110 hover:scale-105 transition duration-700"
+      />
+    </div>
+  ))}
+</div>
 
 function RiadhPackHome() {
   const [menuOpen, setMenuOpen] = useState(false);
