@@ -1,9 +1,10 @@
 @import "tailwindcss" source("../");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap');
+
+/* ====================== TYPOGRAPHY (MAIN FONT) ====================== */
 
 body {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #ffffff;
@@ -12,10 +13,13 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   line-height: 1.2;
+  letter-spacing: -0.02em;
 }
+
+/* ====================== GLOBAL ====================== */
 
 html {
   scroll-behavior: smooth;
@@ -46,20 +50,16 @@ html {
 .slideshow img:nth-child(4)  { animation-delay: 18s; }
 .slideshow img:nth-child(5)  { animation-delay: 24s; }
 .slideshow img:nth-child(6)  { animation-delay: 30s; }
-.slideshow img:nth-child(7)  { animation-delay: 36s; }
-.slideshow img:nth-child(8)  { animation-delay: 42s; }
-.slideshow img:nth-child(9)  { animation-delay: 48s; }
-.slideshow img:nth-child(10) { animation-delay: 54s; }
 
 @keyframes fade {
-  0%   { opacity: 0; }
-  5%   { opacity: 1; }
-  15%  { opacity: 1; }
-  20%  { opacity: 0; }
+  0% { opacity: 0; }
+  5% { opacity: 1; }
+  15% { opacity: 1; }
+  20% { opacity: 0; }
   100% { opacity: 0; }
 }
 
-/* ====================== OTHER ANIMATIONS ====================== */
+/* ====================== FADE ANIMATIONS ====================== */
 
 .animate-fade-in-up {
   animation: fadeInUp 0.7s ease forwards;
@@ -68,11 +68,6 @@ html {
 .animate-fade-in {
   animation: fadeIn 0.6s ease forwards;
 }
-
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
 
 @keyframes fadeInUp {
   from {
@@ -130,27 +125,33 @@ html {
   margin-right: auto;
 }
 
-/* ====================== 🔥 FIXED SLOW SLIDER ====================== */
+/* ====================== 🎬 CINEMATIC 2-ROW SLIDER ====================== */
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-1800px); /* adjust if needed */
-  }
+@keyframes scroll-slow {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-.animate-scroll {
-  animation: scroll 140s linear infinite;
+@keyframes scroll-reverse {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+
+.animate-scroll-slow {
+  animation: scroll-slow 140s linear infinite;
 }
 
 .animate-scroll-reverse {
-  animation: scroll 160s linear infinite reverse;
+  animation: scroll-reverse 120s linear infinite;
 }
 
-/* Pause on hover */
-.animate-scroll:hover,
+.animate-scroll-slow,
+.animate-scroll-reverse {
+  will-change: transform;
+}
+
+/* pause on hover */
+.animate-scroll-slow:hover,
 .animate-scroll-reverse:hover {
   animation-play-state: paused;
 }
@@ -159,7 +160,7 @@ html {
 
 html {
   scrollbar-width: thin;
-  scrollbar-color: #555555 #1a1a1a;
+  scrollbar-color: #555 #1a1a1a;
   scrollbar-gutter: stable;
 }
 
@@ -170,56 +171,19 @@ html::-webkit-scrollbar {
 
 html::-webkit-scrollbar-track {
   background: #1a1a1a;
-  border-radius: 10px;
 }
 
 html::-webkit-scrollbar-thumb {
-  background: #555555;
+  background: #555;
   border-radius: 10px;
 }
 
 html::-webkit-scrollbar-thumb:hover {
-  background: #777777;
+  background: #777;
 }
 
-html::-webkit-scrollbar-thumb:active {
-  background: #999999;
-}
-
-/* Mobile scrollbar */
 @media (max-width: 768px) {
   html::-webkit-scrollbar {
     width: 6px;
   }
-}
-
-/* ====================== ROCKSTAR SCROLL ====================== */
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-scroll {
-  animation: scroll 120s linear infinite;
-}
-
-.animate-scroll-reverse {
-  animation: scroll 140s linear infinite reverse;
-}
-
-/* Smooth rendering */
-.animate-scroll,
-.animate-scroll-reverse {
-  will-change: transform;
-}
-
-/* Pause on hover */
-.animate-scroll:hover,
-.animate-scroll-reverse:hover {
-  animation-play-state: paused;
 }

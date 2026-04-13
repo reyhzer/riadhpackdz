@@ -93,46 +93,64 @@ function ContactForm() {
   );
 }
 
-/* ================= ROCKSTAR SLIDER ================= */
-
 function RockstarSliderSection() {
   const images = Array.from({ length: 24 }, (_, i) => `/bg${i + 1}.jpg`);
   const loopImages = [...images, ...images];
 
   return (
-    <section className="relative py-24 bg-black overflow-hidden">
+    <section className="relative py-28 bg-black overflow-hidden">
 
-      <div className="text-center mb-14 relative z-20">
-        <p className="text-gray-400 text-xs tracking-[0.3em] uppercase mb-3">Galerie</p>
-        <h2 className="text-white text-4xl md:text-5xl font-bold">Notre Production</h2>
+      {/* TITLE */}
+      <div className="text-center mb-16 relative z-20">
+        <p className="text-gray-400 text-xs tracking-[0.35em] uppercase mb-3">
+          Galerie
+        </p>
+        <h2 className="text-white text-4xl md:text-5xl font-bold">
+          Notre Production
+        </h2>
       </div>
 
-      {/* fades */}
-      <div className="pointer-events-none absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-black via-black/70 to-transparent z-20" />
-      <div className="pointer-events-none absolute right-0 top-0 w-40 h-full bg-gradient-to-l from-black via-black/70 to-transparent z-20" />
+      {/* EDGE FADE */}
+      <div className="pointer-events-none absolute left-0 top-0 w-48 h-full bg-gradient-to-r from-black via-black/80 to-transparent z-30" />
+      <div className="pointer-events-none absolute right-0 top-0 w-48 h-full bg-gradient-to-l from-black via-black/80 to-transparent z-30" />
 
-      {/* ROW 1 */}
-      <div className="flex gap-5 w-max animate-scroll translate-y-4">
-        {loopImages.map((src, i) => (
-          <div key={i} className="w-[220px] h-[300px] flex-shrink-0 rounded-2xl overflow-hidden">
-            <img src={src} className="w-full h-full object-cover hover:scale-105 transition duration-700 hover:brightness-110" />
-          </div>
-        ))}
+      {/* WRAPPER */}
+      <div className="space-y-10">
+
+        {/* ROW 1 (slower, more cinematic) */}
+        <div className="flex w-max gap-6 animate-scroll-slow will-change-transform">
+          {loopImages.map((src, i) => (
+            <div
+              key={i}
+              className="w-[240px] h-[320px] flex-shrink-0 rounded-2xl overflow-hidden opacity-90"
+            >
+              <img
+                src={src}
+                className="w-full h-full object-cover scale-105 hover:scale-110 transition duration-700"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* ROW 2 (slightly faster + reverse direction = depth feel) */}
+        <div className="flex w-max gap-6 animate-scroll-medium-reverse will-change-transform opacity-80">
+          {loopImages.map((src, i) => (
+            <div
+              key={i}
+              className="w-[220px] h-[300px] flex-shrink-0 rounded-2xl overflow-hidden"
+            >
+              <img
+                src={src}
+                className="w-full h-full object-cover scale-110 hover:scale-105 transition duration-700"
+              />
+            </div>
+          ))}
+        </div>
+
       </div>
-
-      {/* ROW 2 (FIXED) */}
-      <div className="flex gap-5 w-max animate-scroll-reverse -translate-y-4 opacity-90">
-        {loopImages.map((src, i) => (
-          <div key={i} className="w-[200px] h-[280px] flex-shrink-0 rounded-2xl overflow-hidden">
-            <img src={src} className="w-full h-full object-cover transition duration-700 hover:scale-105 hover:brightness-105" />
-          </div>
-        ))}
-      </div>
-
     </section>
   );
 }
-
 
 function RiadhPackHome() {
   const [menuOpen, setMenuOpen] = useState(false);
