@@ -1,8 +1,0 @@
-name = "riadhpackdz"
-compatibility_date = "2024-04-05"
-
-[build]
-command = "npm run build"
-
-[functions]
-nodejs_compat = true
