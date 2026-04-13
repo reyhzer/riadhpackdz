@@ -1,4 +1,4 @@
-name =name = "riadhpackdz"
+name = "riadhpackdz"
 compatibility_date = "2026-04-13"
 compatibility_flags = ["nodejs_compat"]
 main = "@tanstack/react-start/server-entry"
