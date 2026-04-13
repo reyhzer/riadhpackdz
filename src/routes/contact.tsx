@@ -3,35 +3,38 @@ import { useState } from 'react';
 export default function ContactPage() {
   const [loading, setLoading] = useState(false);
 
-  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
+ const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setLoading(true);
 
-    const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
 
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
 
-      if (res.ok) {
-        alert('Demande envoyée avec succès ✅');
-        form.reset();
-      } else {
-        alert('Erreur lors de l’envoi ❌');
-      }
-    } catch (err) {
-      alert('Erreur réseau ❌');
+    const result = await res.json().catch(() => ({}));
+
+    if (res.ok) {
+      alert('Demande envoyée avec succès ✅');
+      form.reset();
+    } else {
+      alert(result.error || 'Erreur lors de l’envoi ❌');
     }
+  } catch (err) {
+    console.error('Fetch error:', err);
+    alert('Erreur réseau - Vérifiez votre connexion internet ❌');
+  }
 
-    setLoading(false);
-  };
-
+  setLoading(false);
+};
   return (
     <section className="min-h-screen bg-black text-white py-20 px-6">
       <div className="max-w-3xl mx-auto">
