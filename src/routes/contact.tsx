@@ -1,44 +1,46 @@
-import { useState } from 'react';
+import { createFileRoute } from '@tanstack/react-router'
 
-export default function ContactPage() {
+export const Route = createFileRoute('/contact')({
+  component: ContactPage,
+})
+
+function ContactPage() {
   const [loading, setLoading] = useState(false);
 
- const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setLoading(true);
+  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
 
-  const form = e.currentTarget;
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData.entries());
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
 
-  try {
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-    const result = await res.json().catch(() => ({}));
+      const result = await res.json().catch(() => ({}));
 
-    if (res.ok) {
-      alert('Demande envoyée avec succès ✅');
-      form.reset();
-    } else {
-      alert(result.error || 'Erreur lors de l’envoi ❌');
+      if (res.ok) {
+        alert('Demande envoyée avec succès ✅');
+        form.reset();
+      } else {
+        alert(result.error || 'Erreur lors de l’envoi ❌');
+      }
+    } catch (err) {
+      console.error('Fetch error:', err);
+      alert('Erreur réseau - Vérifiez votre connexion internet ❌');
     }
-  } catch (err) {
-    console.error('Fetch error:', err);
-    alert('Erreur réseau - Vérifiez votre connexion internet ❌');
-  }
 
-  setLoading(false);
-};
+    setLoading(false);
+  };
+
   return (
     <section className="min-h-screen bg-black text-white py-20 px-6">
       <div className="max-w-3xl mx-auto">
-
         <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center">
           Demander un devis
         </h1>
@@ -48,7 +50,6 @@ export default function ContactPage() {
         </p>
 
         <form onSubmit={sendEmail} className="space-y-6">
-
           <input
             name="name"
             placeholder="Nom / Entreprise"
@@ -108,18 +109,3 @@ export default function ContactPage() {
             className="w-full bg-white text-black py-4 rounded-xl hover:bg-gray-200 transition"
           >
             {loading ? 'Envoi...' : 'Envoyer la demande →'}
-          </button>
-
-        </form>
-
-        <a
-          href="https://wa.me/213XXXXXXXXX"
-          className="block text-center mt-6 text-green-400 hover:underline"
-        >
-          Ou contactez-nous sur WhatsApp
-        </a>
-
-      </div>
-    </section>
-  );
-}
