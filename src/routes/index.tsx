@@ -22,7 +22,7 @@ function IconWhatsApp() {
 }
 
 // ====================== FIXED GALLERY ======================
-ffunction RockstarSliderSection() {
+function RockstarSliderSection() {
   const images = Array.from({ length: 24 }, (_, i) => `/bg${i + 1}.jpg`);
   const loopImages = [...images, ...images];
 
