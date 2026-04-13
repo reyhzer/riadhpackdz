@@ -109,3 +109,18 @@ function ContactPage() {
             className="w-full bg-white text-black py-4 rounded-xl hover:bg-gray-200 transition"
           >
             {loading ? 'Envoi...' : 'Envoyer la demande →'}
+          </button>
+        </form>
+
+        <a
+          href="https://wa.me/213XXXXXXXXX"   // ← Replace with your real WhatsApp number
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block text-center mt-6 text-green-400 hover:underline"
+        >
+          Ou contactez-nous sur WhatsApp
+        </a>
+      </div>
+    </section>
+  );
+}
