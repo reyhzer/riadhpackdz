@@ -21,6 +21,8 @@ function IconWhatsApp() {
   )
 }
 
+/* ================= CONTACT FORM ================= */
+
 function ContactForm() {
   const [fields, setFields] = useState({ name: '', phone: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
@@ -43,6 +45,7 @@ function ContactForm() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(fields),
       });
+
       const result = await response.json();
       if (response.ok && result.success) setSubmitted(true);
       else setError(result.error || "Une erreur est survenue.");
@@ -57,9 +60,7 @@ function ContactForm() {
     return (
       <div className="text-center py-12">
         <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="white" className="w-9 h-9">
-            <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-          </svg>
+          <span className="text-white text-2xl">✓</span>
         </div>
         <h3 className="text-2xl font-bold mb-2 text-white">Message envoyé avec succès !</h3>
         <p className="text-gray-400">Merci ! Nous vous contacterons rapidement.</p>
@@ -69,41 +70,31 @@ function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <label className="block text-sm font-semibold text-gray-300 mb-2">Nom complet *</label>
-        <input type="text" name="name" required value={fields.name} onChange={handleChange}
-          className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none" placeholder="Ex: Sara lopez" />
-      </div>
+      <input className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white"
+        name="name" placeholder="Nom complet" required value={fields.name} onChange={handleChange} />
 
       <div className="grid md:grid-cols-2 gap-6">
-        <div>
-          <label className="block text-sm font-semibold text-gray-300 mb-2">Numéro de téléphone *</label>
-          <input type="tel" name="phone" required value={fields.phone} onChange={handleChange}
-            className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none" placeholder="+213 560 04 25 26" />
-        </div>
-        <div>
-          <label className="block text-sm font-semibold text-gray-300 mb-2">Adresse email *</label>
-          <input type="email" name="email" required value={fields.email} onChange={handleChange}
-            className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none" />
-        </div>
+        <input className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white"
+          name="phone" placeholder="Téléphone" required value={fields.phone} onChange={handleChange} />
+
+        <input className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white"
+          name="email" placeholder="Email" required value={fields.email} onChange={handleChange} />
       </div>
 
-      <div>
-        <label className="block text-sm font-semibold text-gray-300 mb-2">Votre besoin / Demande *</label>
-        <textarea name="message" required rows={6} value={fields.message} onChange={handleChange}
-          className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none resize-none"
-          placeholder="Décrivez votre besoin (quantité, type de sac, impression...)" />
-      </div>
+      <textarea className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white"
+        rows={6} name="message" placeholder="Message" required value={fields.message} onChange={handleChange} />
 
-      {error && <p className="text-red-500 text-sm text-center font-medium">{error}</p>}
+      {error && <p className="text-red-500 text-sm">{error}</p>}
 
-      <button type="submit" disabled={loading}
-        className="w-full bg-red-600 hover:bg-red-700 py-4 rounded-xl text-white font-bold tracking-widest uppercase transition-all disabled:opacity-70">
-        {loading ? 'Envoi en cours...' : 'Envoyer la demande'}
+      <button disabled={loading} className="w-full bg-red-600 py-4 rounded-xl font-bold text-white">
+        {loading ? 'Envoi...' : 'Envoyer'}
       </button>
     </form>
   );
 }
+
+/* ================= ROCKSTAR SLIDER ================= */
+
 function RockstarSliderSection() {
   const images = Array.from({ length: 24 }, (_, i) => `/bg${i + 1}.jpg`);
   const loopImages = [...images, ...images];
@@ -111,61 +102,38 @@ function RockstarSliderSection() {
   return (
     <section className="relative py-24 bg-black overflow-hidden">
 
-      {/* Title */}
       <div className="text-center mb-14 relative z-20">
-        <p className="text-gray-400 text-xs tracking-[0.3em] uppercase mb-3">
-          Galerie
-        </p>
-        <h2 className="text-white text-4xl md:text-5xl font-bold">
-          Notre Production
-        </h2>
+        <p className="text-gray-400 text-xs tracking-[0.3em] uppercase mb-3">Galerie</p>
+        <h2 className="text-white text-4xl md:text-5xl font-bold">Notre Production</h2>
       </div>
 
-      {/* EDGE FADES */}
+      {/* fades */}
       <div className="pointer-events-none absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-black via-black/70 to-transparent z-20" />
       <div className="pointer-events-none absolute right-0 top-0 w-40 h-full bg-gradient-to-l from-black via-black/70 to-transparent z-20" />
 
-      {/* SLIDER */}
-      <div className="space-y-6 relative z-10">
-
-        {/* ROW 1 */}
-        <div className="flex gap-5 w-max animate-scroll translate-y-4">
-          {loopImages.map((src, i) => (
-            <div
-              key={i}
-              className="w-[220px] h-[300px] md:w-[240px] md:h-[320px] flex-shrink-0 rounded-2xl overflow-hidden"
-            >
-              <img
-                src={src}
-                alt=""
-                className="w-full h-full object-cover transition-all duration-700 hover:scale-105 hover:brightness-110"
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* ROW 2 */}
-        <div className="flex gap-5 w-max animate-scroll-reverse -translate-y-4 opacity-95"
-          {loopImages.map((src, i) => (
-            <div
-              key={i}
-              className="w-[200px] h-[280px] md:w-[220px] md:h-[300px] flex-shrink-0 rounded-2xl overflow-hidden"
-            >
-              <img
-                src={src}
-                alt=""
-                className="w-full h-full object-cover transition-all duration-700 hover:scale-105 hover:brightness-105 opacity-85"
-              />
-            </div>
-          ))}
-        </div>
-
+      {/* ROW 1 */}
+      <div className="flex gap-5 w-max animate-scroll translate-y-4">
+        {loopImages.map((src, i) => (
+          <div key={i} className="w-[220px] h-[300px] flex-shrink-0 rounded-2xl overflow-hidden">
+            <img src={src} className="w-full h-full object-cover hover:scale-105 transition duration-700 hover:brightness-110" />
+          </div>
+        ))}
       </div>
+
+      {/* ROW 2 (FIXED) */}
+      <div className="flex gap-5 w-max animate-scroll-reverse -translate-y-4 opacity-90">
+        {loopImages.map((src, i) => (
+          <div key={i} className="w-[200px] h-[280px] flex-shrink-0 rounded-2xl overflow-hidden">
+            <img src={src} className="w-full h-full object-cover transition duration-700 hover:scale-105 hover:brightness-105" />
+          </div>
+        ))}
+      </div>
+
     </section>
   );
 }
 
-export default RockstarSliderSection;
+
 function RiadhPackHome() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
