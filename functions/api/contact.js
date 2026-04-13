@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 
-export async function onRequestPost(context: any) {
+export async function onRequestPost(context)
   const resend = new Resend('re_7LAqXp7E_5PASxQTdc1d1nCCdwT6ZNYJ5');
 
   try {
