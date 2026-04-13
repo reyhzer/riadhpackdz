@@ -133,7 +133,7 @@ function RockstarSliderSection() {
         </div>
 
         {/* ROW 2 (slightly faster + reverse direction = depth feel) */}
-        <div className="flex w-max gap-6 animate-scroll-medium-reverse will-change-transform opacity-80">
+        <div className="flex w-max gap-6 animate-scroll-reverse will-change-transform opacity-80"
           {loopImages.map((src, i) => (
             <div
               key={i}

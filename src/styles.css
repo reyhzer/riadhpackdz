@@ -142,7 +142,7 @@ html {
 }
 
 .animate-scroll-reverse {
-  animation: scroll-reverse 120s linear infinite;
+  animation: scroll-reverse 160s linear infinite;
 }
 
 .animate-scroll-slow,
