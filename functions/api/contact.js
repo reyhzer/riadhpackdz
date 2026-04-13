@@ -1,4 +1,4 @@
-import { Resend } from 'resend';
+import { Resend } from "resend/dist/index.mjs";
 
 export async function onRequestPost(context) {
   const resend = new Resend('re_7LAqXp7E_5PASxQTdc1d1nCCdwT6ZNYJ5');
