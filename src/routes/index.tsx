@@ -5,7 +5,7 @@ export const Route = createFileRoute('/')({
   component: RiadhPackHome,
 })
 
-// Icons
+// ====================== ICONS ======================
 function IconBag() { return <span>👜</span>; }
 function IconWheat() { return <span>🌾</span>; }
 function IconFood() { return <span>🌾</span>; }
@@ -21,137 +21,57 @@ function IconWhatsApp() {
   )
 }
 
-/* ================= CONTACT FORM ================= */
-
-function ContactForm() {
-  const [fields, setFields] = useState({ name: '', phone: '', email: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFields({ ...fields, [e.target.name]: e.target.value });
-    setError('');
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(fields),
-      });
-
-      const result = await response.json();
-      if (response.ok && result.success) setSubmitted(true);
-      else setError(result.error || "Une erreur est survenue.");
-    } catch {
-      setError("Impossible d'envoyer le message.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (submitted) {
-    return (
-      <div className="text-center py-12">
-        <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-          <span className="text-white text-2xl">✓</span>
-        </div>
-        <h3 className="text-2xl font-bold mb-2 text-white">Message envoyé avec succès !</h3>
-        <p className="text-gray-400">Merci ! Nous vous contacterons rapidement.</p>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <input className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white"
-        name="name" placeholder="Nom complet" required value={fields.name} onChange={handleChange} />
-
-      <div className="grid md:grid-cols-2 gap-6">
-        <input className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white"
-          name="phone" placeholder="Téléphone" required value={fields.phone} onChange={handleChange} />
-
-        <input className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white"
-          name="email" placeholder="Email" required value={fields.email} onChange={handleChange} />
-      </div>
-
-      <textarea className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white"
-        rows={6} name="message" placeholder="Message" required value={fields.message} onChange={handleChange} />
-
-      {error && <p className="text-red-500 text-sm">{error}</p>}
-
-      <button disabled={loading} className="w-full bg-red-600 py-4 rounded-xl font-bold text-white">
-        {loading ? 'Envoi...' : 'Envoyer'}
-      </button>
-    </form>
-  );
-}
-
-function RockstarSliderSection() {
+// ====================== FIXED GALLERY ======================
+ffunction RockstarSliderSection() {
   const images = Array.from({ length: 24 }, (_, i) => `/bg${i + 1}.jpg`);
   const loopImages = [...images, ...images];
 
   return (
-    <section className="relative py-28 bg-black overflow-hidden">
-
-      {/* TITLE */}
-      <div className="text-center mb-16 relative z-20">
-        <p className="text-gray-400 text-xs tracking-[0.35em] uppercase mb-3">
-          Galerie
-        </p>
-        <h2 className="text-white text-4xl md:text-5xl font-bold">
-          Notre Production
-        </h2>
+    <section className="relative py-20 bg-black overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between mb-12 relative z-20">
+        <div>
+          <p className="text-red-400 text-sm tracking-[0.3em] uppercase mb-2">Galerie</p>
+          <h2 className="text-white text-4xl md:text-5xl font-bold">Notre Production</h2>
+        </div>
+        
+        {/* Button that goes to /gallery */}
+        <a 
+          href="/gallery" 
+          className="mt-6 md:mt-0 group inline-flex items-center gap-3 bg-white/10 hover:bg-red-600 border border-white/30 hover:border-red-600 px-8 py-4 rounded-2xl text-white font-semibold tracking-widest uppercase transition-all duration-300"
+        >
+          VOIR TOUTE LA GALERIE
+          <span className="group-hover:translate-x-2 transition-transform">→</span>
+        </a>
       </div>
 
-      {/* EDGE FADE */}
-      <div className="pointer-events-none absolute left-0 top-0 w-48 h-full bg-gradient-to-r from-black via-black/80 to-transparent z-30" />
-      <div className="pointer-events-none absolute right-0 top-0 w-48 h-full bg-gradient-to-l from-black via-black/80 to-transparent z-30" />
+      {/* Strong edge fades */}
+      <div className="pointer-events-none absolute left-0 top-0 w-32 md:w-72 h-full bg-gradient-to-r from-black via-black/95 to-transparent z-20" />
+      <div className="pointer-events-none absolute right-0 top-0 w-32 md:w-72 h-full bg-gradient-to-l from-black via-black/95 to-transparent z-20" />
 
-      {/* WRAPPER */}
-      <div className="space-y-10">
-
-        {/* ROW 1 (slower, more cinematic) */}
-        <div className="flex w-max gap-6 animate-scroll-slow will-change-transform">
+      <div className="space-y-8 relative z-10">
+        {/* Row 1 */}
+        <div className="flex gap-5 w-max animate-scroll">
           {loopImages.map((src, i) => (
-            <div
-              key={i}
-              className="w-[240px] h-[320px] flex-shrink-0 rounded-2xl overflow-hidden opacity-90"
-            >
-              <img
-                src={src}
-                className="w-full h-full object-cover scale-105 hover:scale-110 transition duration-700"
-              />
+            <div key={`r1-${i}`} className="w-[240px] h-[320px] md:w-[280px] md:h-[370px] flex-shrink-0 rounded-3xl overflow-hidden shadow-2xl">
+              <img src={src} alt="" className="w-full h-full object-cover transition-all duration-700 hover:scale-105" loading="lazy" />
             </div>
           ))}
         </div>
 
-        {/* ROW 2 (slightly faster + reverse direction = depth feel) */}
-        <div className="flex w-max gap-6 animate-scroll-reverse will-change-transform opacity-80">
+        {/* Row 2 */}
+        <div className="flex gap-5 w-max animate-scroll-reverse">
           {loopImages.map((src, i) => (
-            <div
-              key={i}
-              className="w-[220px] h-[300px] flex-shrink-0 rounded-2xl overflow-hidden"
-            >
-              <img
-                src={src}
-                className="w-full h-full object-cover scale-110 hover:scale-105 transition duration-700"
-              />
+            <div key={`r2-${i}`} className="w-[200px] h-[260px] md:w-[240px] md:h-[310px] flex-shrink-0 rounded-3xl overflow-hidden shadow-2xl opacity-90">
+              <img src={src} alt="" className="w-full h-full object-cover transition-all duration-700 hover:scale-105" loading="lazy" />
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
 }
 
+// ====================== MAIN PAGE ======================
 function RiadhPackHome() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -226,7 +146,7 @@ function RiadhPackHome() {
         </div>
       </header>
 
-      {/* HERO */}
+      {/* HERO - Improved */}
       <section id="accueil" className="relative flex items-center justify-center min-h-screen pt-20 z-0">
         <div className="absolute inset-0 overflow-hidden z-0">
           <video autoPlay muted loop playsInline className="w-full h-full object-cover pointer-events-none">
@@ -236,12 +156,23 @@ function RiadhPackHome() {
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <p className="text-red-400 text-sm tracking-[3px] uppercase mb-6 font-semibold">FABRICANT ALGÉRIEN • DEPUIS 2025</p>
-          <h1 className="text-white text-5xl md:text-7xl font-bold mb-6">EMBALLAGE INDUSTRIEL<br />D'EXCELLENCE</h1>
-          <p className="text-gray-300 text-lg md:text-xl mb-10">Sacs en polypropylène tissé de haute qualité pour l'agriculture, l'agroalimentaire et l'industrie.</p>
+          <p className="text-red-400 text-sm tracking-[3px] uppercase mb-6 font-semibold">
+            FABRICANT ALGÉRIEN • DEPUIS 2025
+          </p>
+          <h1 className="text-white text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            EMBALLAGE INDUSTRIEL<br />D'EXCELLENCE
+          </h1>
+          <p className="text-gray-300 text-lg md:text-xl mb-10 max-w-3xl mx-auto">
+            Sacs en polypropylène tissé de haute qualité pour l'agriculture, l'agroalimentaire et l'industrie.<br />
+            Production locale à Relizane.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#contact" className="bg-white text-black px-10 py-4 font-bold rounded-xl">OBTENIR UN DEVIS</a>
-            <a href="https://wa.me/213560042526" className="border border-white px-10 py-4 rounded-xl">WhatsApp</a>
+            <a href="#contact" className="bg-white text-black px-10 py-4 font-bold rounded-xl hover:bg-gray-100 transition-all">
+              OBTENIR UN DEVIS
+            </a>
+            <a href="https://wa.me/213560042526" className="border border-white px-10 py-4 rounded-xl hover:bg-white/10 transition-all">
+              WhatsApp
+            </a>
           </div>
         </div>
       </section>
@@ -282,7 +213,7 @@ function RiadhPackHome() {
         </div>
       </section>
 
-      {/* PRODUCTS WITH LIGHTBOX */}
+      {/* PRODUCTS */}
       <section id="produits" className="py-24 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -293,7 +224,8 @@ function RiadhPackHome() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product, index) => (
               <div key={index} className="group bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-red-600/50 transition-all duration-300 hover:-translate-y-2">
-                <div className="h-72 bg-zinc-950 flex items-center justify-center p-8 overflow-hidden cursor-pointer" onClick={() => openLightbox(product.image, product.title)}>
+                <div className="h-72 bg-zinc-950 flex items-center justify-center p-8 overflow-hidden cursor-pointer" 
+                     onClick={() => openLightbox(product.image, product.title)}>
                   <img src={product.image} alt={product.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" />
                 </div>
                 <div className="p-8">
@@ -309,7 +241,10 @@ function RiadhPackHome() {
           </div>
         </div>
       </section>
-<RockstarSliderSection />
+
+      {/* GALLERY */}
+      <RockstarSliderSection />
+
       {/* LIGHTBOX */}
       {selectedImage && (
         <div className="fixed inset-0 bg-black/95 z-[2000] flex items-center justify-center p-4" onClick={closeLightbox}>
@@ -357,7 +292,7 @@ function RiadhPackHome() {
             <div>
               <h4 className="font-bold uppercase tracking-widest text-sm mb-4">Contact</h4>
               <p className="text-gray-400">
-                +213 560 04 25 26<br />
+                <a href="tel:+213560042526" className="hover:text-white">+213 560 04 25 26</a><br />
                 commercial@riadhpack.com<br />
                 Zone Industrielle Belhacel, Relizane
               </p>
@@ -376,5 +311,90 @@ function RiadhPackHome() {
         <IconWhatsApp />
       </a>
     </div>
-  )
+  );
+}
+
+// ====================== CONTACT FORM ======================
+function ContactForm() {
+  const [fields, setFields] = useState({ name: '', phone: '', email: '', message: '' });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFields({ ...fields, [e.target.name]: e.target.value });
+    setError('');
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(fields),
+      });
+      const result = await response.json();
+      if (response.ok && result.success) setSubmitted(true);
+      else setError(result.error || "Une erreur est survenue.");
+    } catch {
+      setError("Impossible d'envoyer le message.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (submitted) {
+    return (
+      <div className="text-center py-12">
+        <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="white" className="w-9 h-9">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+          </svg>
+        </div>
+        <h3 className="text-2xl font-bold mb-2 text-white">Message envoyé avec succès !</h3>
+        <p className="text-gray-400">Merci ! Nous vous contacterons rapidement.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div>
+        <label className="block text-sm font-semibold text-gray-300 mb-2">Nom complet *</label>
+        <input type="text" name="name" required value={fields.name} onChange={handleChange}
+          className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none" placeholder="Ex: Sara Lopez" />
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label className="block text-sm font-semibold text-gray-300 mb-2">Numéro de téléphone *</label>
+          <input type="tel" name="phone" required value={fields.phone} onChange={handleChange}
+            className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none" placeholder="+213 560 04 25 26" />
+        </div>
+        <div>
+          <label className="block text-sm font-semibold text-gray-300 mb-2">Adresse email *</label>
+          <input type="email" name="email" required value={fields.email} onChange={handleChange}
+            className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none" />
+        </div>
+      </div>
+
+      <div>
+        <label className="block text-sm font-semibold text-gray-300 mb-2">Votre besoin / Demande *</label>
+        <textarea name="message" required rows={6} value={fields.message} onChange={handleChange}
+          className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none resize-none"
+          placeholder="Décrivez votre besoin (quantité, type de sac, impression...)" />
+      </div>
+
+      {error && <p className="text-red-500 text-sm text-center font-medium">{error}</p>}
+
+      <button type="submit" disabled={loading}
+        className="w-full bg-red-600 hover:bg-red-700 py-4 rounded-xl text-white font-bold tracking-widest uppercase transition-all disabled:opacity-70">
+        {loading ? 'Envoi en cours...' : 'Envoyer la demande'}
+      </button>
+    </form>
+  );
 }

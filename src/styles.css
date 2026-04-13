@@ -1,14 +1,11 @@
 @import "tailwindcss" source("../");
 
-/* ====================== TYPOGRAPHY (MAIN FONT) ====================== */
-
+/* ====================== TYPOGRAPHY ====================== */
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
-  color: #111111;
   line-height: 1.6;
 }
 
@@ -20,20 +17,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ====================== GLOBAL ====================== */
-
 html {
   scroll-behavior: smooth;
 }
 
 /* ====================== BACKGROUND SLIDESHOW ====================== */
-
 .slideshow {
   position: absolute;
   inset: 0;
   overflow: hidden;
   z-index: -1;
 }
-
 .slideshow img {
   position: absolute;
   inset: 0;
@@ -43,13 +37,12 @@ html {
   opacity: 0;
   animation: fade 60s infinite;
 }
-
-.slideshow img:nth-child(1)  { animation-delay: 0s; }
-.slideshow img:nth-child(2)  { animation-delay: 6s; }
-.slideshow img:nth-child(3)  { animation-delay: 12s; }
-.slideshow img:nth-child(4)  { animation-delay: 18s; }
-.slideshow img:nth-child(5)  { animation-delay: 24s; }
-.slideshow img:nth-child(6)  { animation-delay: 30s; }
+.slideshow img:nth-child(1) { animation-delay: 0s; }
+.slideshow img:nth-child(2) { animation-delay: 6s; }
+.slideshow img:nth-child(3) { animation-delay: 12s; }
+.slideshow img:nth-child(4) { animation-delay: 18s; }
+.slideshow img:nth-child(5) { animation-delay: 24s; }
+.slideshow img:nth-child(6) { animation-delay: 30s; }
 
 @keyframes fade {
   0% { opacity: 0; }
@@ -59,34 +52,37 @@ html {
   100% { opacity: 0; }
 }
 
-/* ====================== FADE ANIMATIONS ====================== */
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.7s ease forwards;
+/* ====================== CINEMATIC INFINITE GALLERY (Fixed) ====================== */
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.6s ease forwards;
+@keyframes scroll-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.animate-scroll {
+  animation: scroll 45s linear infinite;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.animate-scroll-reverse {
+  animation: scroll-reverse 50s linear infinite;
+}
+
+/* Pause on hover */
+.animate-scroll:hover,
+.animate-scroll-reverse:hover {
+  animation-play-state: paused;
+}
+
+.animate-scroll,
+.animate-scroll-reverse {
+  will-change: transform;
 }
 
 /* ====================== WHATSAPP BUTTON ====================== */
-
 .whatsapp-float {
   position: fixed;
   bottom: 28px;
@@ -104,14 +100,12 @@ html {
   text-decoration: none;
   color: white;
 }
-
 .whatsapp-float:hover {
   transform: scale(1.08);
   box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
 }
 
 /* ====================== DIVIDER ====================== */
-
 .section-divider {
   width: 56px;
   height: 3px;
@@ -119,65 +113,28 @@ html {
   margin: 0 auto 1.5rem;
   border-radius: 3px;
 }
-
 .section-divider-left {
   margin-left: 0;
   margin-right: auto;
 }
 
-/* ====================== 🎬 CINEMATIC 2-ROW SLIDER ====================== */
-
-@keyframes scroll-slow {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes scroll-reverse {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(50%); }
-}
-
-.animate-scroll-slow {
-  animation: scroll-slow 140s linear infinite;
-}
-
-.animate-scroll-reverse {
-  animation: scroll-reverse 160s linear infinite;
-}
-
-.animate-scroll-slow,
-.animate-scroll-reverse {
-  will-change: transform;
-}
-
-/* pause on hover */
-.animate-scroll-slow:hover,
-.animate-scroll-reverse:hover {
-  animation-play-state: paused;
-}
-
 /* ====================== SCROLLBAR ====================== */
-
 html {
   scrollbar-width: thin;
   scrollbar-color: #555 #1a1a1a;
   scrollbar-gutter: stable;
 }
-
 html::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-
 html::-webkit-scrollbar-track {
   background: #1a1a1a;
 }
-
 html::-webkit-scrollbar-thumb {
   background: #555;
   border-radius: 10px;
 }
-
 html::-webkit-scrollbar-thumb:hover {
   background: #777;
 }
