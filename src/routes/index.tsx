@@ -72,7 +72,7 @@ function ContactForm() {
       <div>
         <label className="block text-sm font-semibold text-gray-300 mb-2">Nom complet *</label>
         <input type="text" name="name" required value={fields.name} onChange={handleChange}
-          className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none" placeholder="Ex: Ahmed Benali" />
+          className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-5 py-4 text-white focus:border-red-600 outline-none" placeholder="Ex: Sara lopez" />
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
@@ -106,57 +106,55 @@ function ContactForm() {
 }
 function RockstarSliderSection() {
   const images = Array.from({ length: 24 }, (_, i) => `/bg${i + 1}.jpg`);
-  const loopImages = [...images, ...images]; // infinite loop
+  const loopImages = [...images, ...images];
 
   return (
-    <section className="relative py-28 bg-black overflow-hidden">
+    <section className="relative py-24 bg-black overflow-hidden">
 
       {/* Title */}
-      <div className="text-center mb-16 relative z-20">
-        <p className="text-red-400 text-sm tracking-widest uppercase mb-3">
-          GALERIE
+      <div className="text-center mb-14 relative z-20">
+        <p className="text-gray-400 text-xs tracking-[0.3em] uppercase mb-3">
+          Galerie
         </p>
-        <h2 className="text-white text-5xl font-bold">
+        <h2 className="text-white text-4xl md:text-5xl font-bold">
           Notre Production
         </h2>
       </div>
 
-      {/* LEFT FADE */}
-      <div className="pointer-events-none absolute left-0 top-0 w-52 h-full bg-gradient-to-r from-gray-900/90 via-gray-900/60 to-transparent z-20" />
-
-      {/* RIGHT FADE */}
-      <div className="pointer-events-none absolute right-0 top-0 w-52 h-full bg-gradient-to-l from-gray-900/90 via-gray-900/60 to-transparent z-20" />
+      {/* EDGE FADES */}
+      <div className="pointer-events-none absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-black via-black/70 to-transparent z-20" />
+      <div className="pointer-events-none absolute right-0 top-0 w-40 h-full bg-gradient-to-l from-black via-black/70 to-transparent z-20" />
 
       {/* SLIDER */}
-      <div className="space-y-10 relative z-10">
+      <div className="space-y-6 relative z-10">
 
         {/* ROW 1 */}
-        <div className="flex gap-8 w-max animate-scroll">
+        <div className="flex gap-5 w-max animate-scroll translate-y-4">
           {loopImages.map((src, i) => (
             <div
               key={i}
-              className="w-[320px] h-[440px] flex-shrink-0 rounded-3xl overflow-hidden"
+              className="w-[220px] h-[300px] md:w-[240px] md:h-[320px] flex-shrink-0 rounded-2xl overflow-hidden"
             >
               <img
                 src={src}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 alt=""
+                className="w-full h-full object-cover transition-all duration-700 hover:scale-105 hover:brightness-110"
               />
             </div>
           ))}
         </div>
 
-        {/* ROW 2 (reverse) */}
-        <div className="flex gap-8 w-max animate-scroll-reverse">
+        {/* ROW 2 */}
+        <div className="flex gap-5 w-max animate-scroll-reverse -translate-y-4 opacity-95"
           {loopImages.map((src, i) => (
             <div
               key={i}
-              className="w-[300px] h-[420px] flex-shrink-0 rounded-3xl overflow-hidden"
+              className="w-[200px] h-[280px] md:w-[220px] md:h-[300px] flex-shrink-0 rounded-2xl overflow-hidden"
             >
               <img
                 src={src}
-                className="w-full h-full object-cover"
                 alt=""
+                className="w-full h-full object-cover transition-all duration-700 hover:scale-105 hover:brightness-105 opacity-85"
               />
             </div>
           ))}
@@ -166,6 +164,8 @@ function RockstarSliderSection() {
     </section>
   );
 }
+
+export default RockstarSliderSection;
 function RiadhPackHome() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -250,7 +250,7 @@ function RiadhPackHome() {
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <p className="text-red-400 text-sm tracking-[3px] uppercase mb-6 font-semibold">FABRICANT ALGÉRIEN • DEPUIS 2015</p>
+          <p className="text-red-400 text-sm tracking-[3px] uppercase mb-6 font-semibold">FABRICANT ALGÉRIEN • DEPUIS 2025</p>
           <h1 className="text-white text-5xl md:text-7xl font-bold mb-6">EMBALLAGE INDUSTRIEL<br />D'EXCELLENCE</h1>
           <p className="text-gray-300 text-lg md:text-xl mb-10">Sacs en polypropylène tissé de haute qualité pour l'agriculture, l'agroalimentaire et l'industrie.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

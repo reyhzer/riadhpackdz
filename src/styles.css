@@ -21,7 +21,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ====================== BACKGROUND SLIDESHOW - 10 IMAGES ====================== */
+/* ====================== BACKGROUND SLIDESHOW ====================== */
 
 .slideshow {
   position: absolute;
@@ -40,7 +40,6 @@ html {
   animation: fade 60s infinite;
 }
 
-/* Timing for 10 images */
 .slideshow img:nth-child(1)  { animation-delay: 0s; }
 .slideshow img:nth-child(2)  { animation-delay: 6s; }
 .slideshow img:nth-child(3)  { animation-delay: 12s; }
@@ -60,7 +59,7 @@ html {
   100% { opacity: 0; }
 }
 
-/* ====================== OTHER STYLES ====================== */
+/* ====================== OTHER ANIMATIONS ====================== */
 
 .animate-fade-in-up {
   animation: fadeInUp 0.7s ease forwards;
@@ -91,7 +90,8 @@ html {
   to { opacity: 1; }
 }
 
-/* WhatsApp floating button */
+/* ====================== WHATSAPP BUTTON ====================== */
+
 .whatsapp-float {
   position: fixed;
   bottom: 28px;
@@ -115,7 +115,8 @@ html {
   box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
 }
 
-/* Section divider */
+/* ====================== DIVIDER ====================== */
+
 .section-divider {
   width: 56px;
   height: 3px;
@@ -129,40 +130,39 @@ html {
   margin-right: auto;
 }
 
-/* Marquee scrolling */
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
+/* ====================== 🔥 FIXED SLOW SLIDER ====================== */
 
-@keyframes scroll-reverse {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-1800px); /* adjust if needed */
+  }
 }
 
 .animate-scroll {
-  animation: scroll 40s linear infinite;
+  animation: scroll 140s linear infinite;
 }
 
 .animate-scroll-reverse {
-  animation: scroll-reverse 50s linear infinite;
+  animation: scroll 160s linear infinite reverse;
 }
 
+/* Pause on hover */
 .animate-scroll:hover,
 .animate-scroll-reverse:hover {
   animation-play-state: paused;
 }
 
-/* ====================== ROCKSTAR-STYLE SCROLLBAR ====================== */
-/* Works on Desktop + many Mobile browsers (Chrome, Edge, modern Safari) */
+/* ====================== SCROLLBAR ====================== */
 
 html {
-  scrollbar-width: thin;           /* Firefox + standard */
+  scrollbar-width: thin;
   scrollbar-color: #555555 #1a1a1a;
-  scrollbar-gutter: stable;        /* Prevents layout shift */
+  scrollbar-gutter: stable;
 }
 
-/* WebKit browsers (Chrome, Edge, Safari - including mobile) */
 html::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -186,54 +186,40 @@ html::-webkit-scrollbar-thumb:active {
   background: #999999;
 }
 
-/* Optional: Make it slightly thinner on mobile screens */
+/* Mobile scrollbar */
 @media (max-width: 768px) {
   html::-webkit-scrollbar {
     width: 6px;
   }
 }
-/* ====================== ROCKSTAR-STYLE SCROLLBAR v3 - STRONG & RELIABLE ====================== */
 
-.rockstar-scroll,
-.rockstar-scroll * {
-    scrollbar-width: thin !important;
-    scrollbar-color: #4d4d4d #121212 !important;
-    scrollbar-gutter: stable !important;
+/* ====================== ROCKSTAR SCROLL ====================== */
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-/* WebKit browsers (Chrome, Edge, Safari, most mobile browsers) */
-.rockstar-scroll::-webkit-scrollbar,
-.rockstar-scroll *::-webkit-scrollbar {
-    width: 7px !important;
-    height: 7px !important;
+.animate-scroll {
+  animation: scroll 120s linear infinite;
 }
 
-.rockstar-scroll::-webkit-scrollbar-track,
-.rockstar-scroll *::-webkit-scrollbar-track {
-    background: #121212 !important;
-    border-radius: 20px;
+.animate-scroll-reverse {
+  animation: scroll 140s linear infinite reverse;
 }
 
-.rockstar-scroll::-webkit-scrollbar-thumb,
-.rockstar-scroll *::-webkit-scrollbar-thumb {
-    background: #4d4d4d !important;
-    border-radius: 20px;
+/* Smooth rendering */
+.animate-scroll,
+.animate-scroll-reverse {
+  will-change: transform;
 }
 
-.rockstar-scroll::-webkit-scrollbar-thumb:hover,
-.rockstar-scroll *::-webkit-scrollbar-thumb:hover {
-    background: #6b6b6b !important;
-}
-
-.rockstar-scroll::-webkit-scrollbar-thumb:active,
-.rockstar-scroll *::-webkit-scrollbar-thumb:active {
-    background: #8a8a8a !important;
-}
-
-/* Slightly thinner on mobile */
-@media (max-width: 768px) {
-    .rockstar-scroll::-webkit-scrollbar,
-    .rockstar-scroll *::-webkit-scrollbar {
-        width: 5px !important;
-    }
+/* Pause on hover */
+.animate-scroll:hover,
+.animate-scroll-reverse:hover {
+  animation-play-state: paused;
 }
