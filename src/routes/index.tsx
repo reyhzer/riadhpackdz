@@ -27,46 +27,76 @@ function RockstarSliderSection() {
   const loopImages = [...images, ...images];
 
   return (
-    <section className="relative py-20 bg-black overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between mb-12 relative z-20">
-        <div>
-          <p className="text-red-400 text-sm tracking-[0.3em] uppercase mb-2">Galerie</p>
-          <h2 className="text-white text-4xl md:text-5xl font-bold">Notre Production</h2>
-        </div>
-        
-        {/* Button that goes to /gallery */}
-        <a 
-          href="/gallery" 
-          className="mt-6 md:mt-0 group inline-flex items-center gap-3 bg-white/10 hover:bg-red-600 border border-white/30 hover:border-red-600 px-8 py-4 rounded-2xl text-white font-semibold tracking-widest uppercase transition-all duration-300"
-        >
-          VOIR TOUTE LA GALERIE
-          <span className="group-hover:translate-x-2 transition-transform">→</span>
-        </a>
-      </div>
+    <section className="relative py-16 bg-black overflow-hidden">
 
-      {/* Strong edge fades */}
-      <div className="pointer-events-none absolute left-0 top-0 w-32 md:w-72 h-full bg-gradient-to-r from-black via-black/95 to-transparent z-20" />
-      <div className="pointer-events-none absolute right-0 top-0 w-32 md:w-72 h-full bg-gradient-to-l from-black via-black/95 to-transparent z-20" />
+      {/* 🔹 SCROLLING IMAGES */}
+      <div className="space-y-6 relative z-10">
 
-      <div className="space-y-8 relative z-10">
         {/* Row 1 */}
-        <div className="flex gap-5 w-max animate-scroll">
+        <div className="flex gap-3 w-max animate-scroll">
           {loopImages.map((src, i) => (
-            <div key={`r1-${i}`} className="w-[240px] h-[320px] md:w-[280px] md:h-[370px] flex-shrink-0 rounded-3xl overflow-hidden shadow-2xl">
-              <img src={src} alt="" className="w-full h-full object-cover transition-all duration-700 hover:scale-105" loading="lazy" />
+            <div
+              key={`r1-${i}`}
+              className="group w-[140px] h-[180px] md:w-[190px] md:h-[240px] flex-shrink-0 rounded-lg overflow-hidden relative transform transition duration-300 group-hover:-translate-y-1"
+            >
+              <img
+                src={src}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+              />
+
+              {/* 🔥 Hover overlay */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-500" />
             </div>
           ))}
         </div>
 
         {/* Row 2 */}
-        <div className="flex gap-5 w-max animate-scroll-reverse">
+        <div className="flex gap-3 w-max animate-scroll-reverse opacity-90">
           {loopImages.map((src, i) => (
-            <div key={`r2-${i}`} className="w-[200px] h-[260px] md:w-[240px] md:h-[310px] flex-shrink-0 rounded-3xl overflow-hidden shadow-2xl opacity-90">
-              <img src={src} alt="" className="w-full h-full object-cover transition-all duration-700 hover:scale-105" loading="lazy" />
+            <div
+              key={`r2-${i}`}
+              className="group w-[120px] h-[160px] md:w-[170px] md:h-[210px] flex-shrink-0 rounded-lg overflow-hidden relative transform transition duration-300 group-hover:-translate-y-1"
+            >
+              <img
+                src={src}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+              />
+
+              {/* 🔥 Hover overlay */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-500" />
             </div>
           ))}
         </div>
       </div>
+
+      {/* 🔥 ROCKSTAR DARK OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-20" />
+
+      {/* 🔥 TEXT + BUTTON */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 text-center max-w-xl px-4">
+
+        <p className="text-red-400 text-xs md:text-sm tracking-[0.3em] uppercase mb-2">
+          Galerie
+        </p>
+
+        <h2 className="text-white text-2xl md:text-4xl font-bold mb-4">
+          Notre Production
+        </h2>
+
+        <p className="text-gray-300 mb-6 text-sm md:text-base">
+          Découvrez tous nos produits et réalisations industrielles.
+        </p>
+
+        <a
+          href="/gallery"
+          className="inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-200 transition"
+        >
+          Voir toute la galerie →
+        </a>
+      </div>
+
     </section>
   );
 }
