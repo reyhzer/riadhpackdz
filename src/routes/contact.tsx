@@ -3,22 +3,30 @@ import { useState } from 'react';
 export default function ContactPage() {
   const [loading, setLoading] = useState(false);
 
-  const sendEmail = async (e: any) => {
+  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
-    const data = Object.fromEntries(new FormData(e.target).entries());
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
 
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    });
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-    if (res.ok) {
-      alert('Demande envoyée avec succès ✅');
-      e.target.reset();
-    } else {
-      alert('Erreur ❌');
+      if (res.ok) {
+        alert('Demande envoyée avec succès ✅');
+        form.reset();
+      } else {
+        alert('Erreur lors de l’envoi ❌');
+      }
+    } catch (err) {
+      alert('Erreur réseau ❌');
     }
 
     setLoading(false);
@@ -38,32 +46,73 @@ export default function ContactPage() {
 
         <form onSubmit={sendEmail} className="space-y-6">
 
-          <input name="name" placeholder="Nom / Entreprise" required className="w-full p-4 bg-white/10 rounded-xl" />
+          <input
+            name="name"
+            placeholder="Nom / Entreprise"
+            required
+            className="w-full p-4 bg-white/10 rounded-xl"
+          />
 
-          <input name="email" type="email" placeholder="Email" required className="w-full p-4 bg-white/10 rounded-xl" />
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            required
+            className="w-full p-4 bg-white/10 rounded-xl"
+          />
 
-          <input name="phone" placeholder="Téléphone" required className="w-full p-4 bg-white/10 rounded-xl" />
+          <input
+            name="phone"
+            placeholder="Téléphone"
+            required
+            className="w-full p-4 bg-white/10 rounded-xl"
+          />
 
-          <select name="product" required className="w-full p-4 bg-white/10 rounded-xl">
+          <select
+            name="product"
+            required
+            className="w-full p-4 bg-white/10 rounded-xl"
+          >
             <option value="">Type de sac</option>
             <option>Sac en polypropylène</option>
             <option>Sac personnalisé</option>
             <option>Autre</option>
           </select>
 
-          <input name="quantity" type="number" placeholder="Quantité (ex: 5000)" required className="w-full p-4 bg-white/10 rounded-xl" />
+          <input
+            name="quantity"
+            type="number"
+            placeholder="Quantité (ex: 5000)"
+            required
+            className="w-full p-4 bg-white/10 rounded-xl"
+          />
 
-          <input name="custom" placeholder="Personnalisation" className="w-full p-4 bg-white/10 rounded-xl" />
+          <input
+            name="custom"
+            placeholder="Personnalisation"
+            className="w-full p-4 bg-white/10 rounded-xl"
+          />
 
-          <textarea name="message" placeholder="Détails supplémentaires" className="w-full p-4 bg-white/10 rounded-xl" />
+          <textarea
+            name="message"
+            placeholder="Détails supplémentaires"
+            className="w-full p-4 bg-white/10 rounded-xl"
+          />
 
-          <button className="w-full bg-white text-black py-4 rounded-xl">
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-white text-black py-4 rounded-xl hover:bg-gray-200 transition"
+          >
             {loading ? 'Envoi...' : 'Envoyer la demande →'}
           </button>
 
         </form>
 
-        <a href="https://wa.me/213XXXXXXXXX" className="block text-center mt-6 text-green-400">
+        <a
+          href="https://wa.me/213XXXXXXXXX"
+          className="block text-center mt-6 text-green-400 hover:underline"
+        >
           Ou contactez-nous sur WhatsApp
         </a>
 
