@@ -1,97 +1,59 @@
+import { Resend } from 'resend';
+
 export async function onRequestPost(context) {
+  const resend = new Resend('re_7LAqXp7E_5PASxQTdc1d1nCCdwT6ZNYJ5');
+
   try {
     const data = await context.request.json();
 
-    // Basic validation
-    if (!data.name || !data.email || !data.product || !data.quantity) {
-      return new Response(
-        JSON.stringify({ error: 'Missing required fields (name, email, product, quantity)' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
-      );
-    }
+    // ✅ EMAIL TO YOU
+    await resend.emails.send({
+      from: 'Riadh Pack <commercial@riadhpack.com>',
+      to: ['commercial@riadhpack.com'],
+      subject: 'Nouvelle demande de devis - Riadh Pack',
+      html: `
+        <h2>Nouvelle demande de devis</h2>
 
-    const RESEND_API_KEY = context.env.RESEND_API_KEY;
-
-    if (!RESEND_API_KEY) {
-      console.error('RESEND_API_KEY is not set in Cloudflare environment variables');
-      return new Response(
-        JSON.stringify({ error: 'Server configuration error' }),
-        { status: 500, headers: { 'Content-Type': 'application/json' } }
-      );
-    }
-
-    // Main email to you (commercial@riadhpack.com)
-    await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: 'Riadh Pack <commercial@riadhpack.com>',
-        to: ['commercial@riadhpack.com'],
-        subject: 'Nouvelle demande de devis - Riadh Pack',
-        html: `
-          <h2>Nouvelle demande de devis</h2>
-          <p><b>Nom / Entreprise:</b> ${data.name}</p>
-          <p><b>Email:</b> ${data.email}</p>
-          <p><b>Téléphone:</b> ${data.phone || 'Non fourni'}</p>
-          <p><b>Produit:</b> ${data.product}</p>
-          <p><b>Quantité:</b> ${data.quantity}</p>
-          <p><b>Personnalisation:</b> ${data.custom || 'Aucune'}</p>
-          <p><b>Message:</b> ${data.message || 'Aucun message supplémentaire'}</p>
-          <hr>
-          <p><small>Envoyé via le formulaire du site web</small></p>
-        `,
-      }),
+        <p><b>Nom:</b> ${data.name}</p>
+        <p><b>Email:</b> ${data.email}</p>
+        <p><b>Téléphone:</b> ${data.phone}</p>
+        <p><b>Produit:</b> ${data.product}</p>
+        <p><b>Quantité:</b> ${data.quantity}</p>
+        <p><b>Personnalisation:</b> ${data.custom}</p>
+        <p><b>Message:</b> ${data.message}</p>
+      `,
     });
 
-    // Auto-reply to the customer
-    await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: 'Riadh Pack <commercial@riadhpack.com>',
-        to: [data.email],
-        subject: 'Votre demande de devis a été reçue - Riadh Pack',
-        html: `
-          <h2>Merci ${data.name} !</h2>
-          <p>Nous avons bien reçu votre demande de devis.</p>
-          <p>Notre équipe commerciale vous répondra dans les plus brefs délais (sous 24h maximum).</p>
-          
-          <h3>Résumé de votre demande :</h3>
-          <ul>
-            <li><b>Produit :</b> ${data.product}</li>
-            <li><b>Quantité :</b> ${data.quantity}</li>
-            ${data.custom ? `<li><b>Personnalisation :</b> ${data.custom}</li>` : ''}
-          </ul>
+    // ✅ AUTO REPLY TO CLIENT
+    await resend.emails.send({
+      from: 'Riadh Pack <commercial@riadhpack.com>',
+      to: [data.email],
+      subject: 'Votre demande a été reçue - Riadh Pack',
+      html: `
+        <h2>Merci pour votre demande</h2>
 
-          <p>En attendant notre réponse, n'hésitez pas à nous contacter sur WhatsApp.</p>
-          <br/>
-          <p>Cordialement,<br/><strong>L'équipe RIADH PACK</strong></p>
-        `,
-      }),
+        <p>Bonjour ${data.name},</p>
+
+        <p>
+          Nous avons bien reçu votre demande de devis.
+          Notre équipe vous répondra sous 24h.
+        </p>
+
+        <p><b>Résumé :</b></p>
+        <ul>
+          <li>Produit: ${data.product}</li>
+          <li>Quantité: ${data.quantity}</li>
+        </ul>
+
+        <br/>
+
+        <p>Cordialement,<br/>RIADH PACK</p>
+      `,
     });
 
-    return new Response(
-      JSON.stringify({ success: true, message: 'Emails sent successfully' }),
-      { 
-        status: 200,
-        headers: { 'Content-Type': 'application/json' }
-      }
-    );
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
 
   } catch (error) {
-    console.error('Contact form error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Failed to send email. Please try again later.' }),
-      { 
-        status: 500,
-        headers: { 'Content-Type': 'application/json' }
-      }
-    );
+    return new Response(JSON.stringify({ error: 'Failed to send email' }), { status: 500 });
   }
 }
