@@ -9,7 +9,7 @@ export const Route = createFileRoute('/')({
 function IconBag() { return <span>👜</span>; }
 function IconWheat() { return <span>🌾</span>; }
 function IconFood() { return <span>🌾</span>; }
-function IconValve() { return <span>🔧</span>; }
+function IconValve() { return <span>🧻</span>; }
 function IconCustom() { return <span>🖨️</span>; }
 function IconScale() { return <span>⚖️</span>; }
 
