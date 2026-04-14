@@ -1,4 +1,4 @@
-import { r as reactExports, a as arraysEqual, c as createLRUCache, i as isPromise, b as isRedirect, d as isNotFound, e as invariant, f as createControlledPromise, g as rootRouteId, h as isServer, j as compileDecodeCharMap, t as trimPath, k as rewriteBasepath, l as composeRewrites, p as processRouteTree, m as processRouteMasks, n as resolvePath, o as cleanPath, q as trimPathRight, s as parseHref, u as executeRewriteInput, v as isDangerousProtocol, w as redirect, x as findSingleMatch, y as deepEqual, D as DEFAULT_PROTOCOL_ALLOWLIST, z as interpolatePath, A as nullReplaceEqualDeep, B as replaceEqualDeep, C as last, E as decodePath, F as findFlatMatch, G as functionalUpdate, H as findRouteMatch, I as executeRewriteOutput, J as encodePathLikeUrl, K as trimPathLeft, L as joinPaths, M as useRouter, N as dummyMatchContext, O as matchContext, P as requireReactDom, Q as exactPathTest, R as removeTrailingSlash, S as React, T as jsxRuntimeExports, U as isModuleNotFoundError, V as useHydrated, W as escapeHtml, X as getAssetCrossOrigin, Y as resolveManifestAssetLink } from "./worker-entry-DjegUyKg.js";
+import { r as reactExports, a as arraysEqual, c as createLRUCache, i as isPromise, b as isRedirect, d as isNotFound, e as invariant, f as createControlledPromise, g as rootRouteId, h as isServer, j as compileDecodeCharMap, t as trimPath, k as rewriteBasepath, l as composeRewrites, p as processRouteTree, m as processRouteMasks, n as resolvePath, o as cleanPath, q as trimPathRight, s as parseHref, u as executeRewriteInput, v as isDangerousProtocol, w as redirect, x as findSingleMatch, y as deepEqual, D as DEFAULT_PROTOCOL_ALLOWLIST, z as interpolatePath, A as nullReplaceEqualDeep, B as replaceEqualDeep, C as last, E as decodePath, F as findFlatMatch, G as functionalUpdate, H as findRouteMatch, I as executeRewriteOutput, J as encodePathLikeUrl, K as trimPathLeft, L as joinPaths, M as useRouter, N as dummyMatchContext, O as matchContext, P as requireReactDom, Q as exactPathTest, R as removeTrailingSlash, S as React, T as jsxRuntimeExports, U as isModuleNotFoundError, V as useHydrated, W as escapeHtml, X as getAssetCrossOrigin, Y as resolveManifestAssetLink } from "./worker-entry-Bw3kwPzQ.js";
 var reactUse = reactExports.use;
 function useForwardedRef(ref) {
   const innerRef = reactExports.useRef(null);
@@ -2697,11 +2697,11 @@ function RootDocument({ children }) {
     ] })
   ] });
 }
-const $$splitComponentImporter$2 = () => import("./gallery-ygaTYbcR.js");
+const $$splitComponentImporter$2 = () => import("./gallery-CYwlInq1.js");
 const Route$2 = createFileRoute("/gallery")({
   component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-const $$splitComponentImporter$1 = () => import("./index-E0qYylXY.js");
+const $$splitComponentImporter$1 = () => import("./index-D0rrfiJ-.js");
 const Route$1 = createFileRoute("/")({
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
@@ -2715,7 +2715,7 @@ const products = [
     price: 3e3
   }
 ];
-const $$splitComponentImporter = () => import("./_productId-D10k-s88.js");
+const $$splitComponentImporter = () => import("./_productId-DYemdbcV.js");
 const Route2 = createFileRoute("/products/$productId")({
   component: lazyRouteComponent($$splitComponentImporter, "component"),
   loader: async ({
