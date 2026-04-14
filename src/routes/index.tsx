@@ -362,11 +362,11 @@ function ContactForm() {
     setError('');
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(fields),
-      });
+     const response = await fetch('/api/contact', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(fields),
+});
       const result = await response.json();
       if (response.ok && result.success) setSubmitted(true);
       else setError(result.error || "Une erreur est survenue.");
