@@ -1,4 +1,0 @@
-const tsrStartManifest = () => ({ "routes": { "__root__": { "filePath": "C:/Users/THINKCENTREM7002/Downloads/www.jpel.in (1)/riadhpackdz/src/routes/__root.tsx", "children": ["/", "/gallery", "/products/$productId"], "preloads": ["/assets/main-7meV53o4.js"] }, "/": { "filePath": "C:/Users/THINKCENTREM7002/Downloads/www.jpel.in (1)/riadhpackdz/src/routes/index.tsx", "preloads": ["/assets/index-2sUIGjTs.js"] }, "/gallery": { "filePath": "C:/Users/THINKCENTREM7002/Downloads/www.jpel.in (1)/riadhpackdz/src/routes/gallery.tsx", "preloads": ["/assets/gallery-Dvyw2bVG.js"] }, "/products/$productId": { "filePath": "C:/Users/THINKCENTREM7002/Downloads/www.jpel.in (1)/riadhpackdz/src/routes/products/$productId.tsx", "preloads": ["/assets/_productId-C37gmtnU.js"] } }, "clientEntry": "/assets/main-7meV53o4.js" });
-export {
-  tsrStartManifest
-};
