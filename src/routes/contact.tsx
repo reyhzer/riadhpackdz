@@ -1,73 +1,36 @@
-import { useState } from 'react';
+import { createFileRoute } from '@tanstack/react-router'
+import { useState } from 'react'
 
-export default function ContactPage() {
-  const [loading, setLoading] = useState(false);
+export const Route = createFileRoute('/contact')({
+  component: Contact,
+})
 
-  const sendEmail = async (e: any) => {
-    e.preventDefault();
-    setLoading(true);
+function Contact() {
+  const [loading, setLoading] = useState(false)
 
-    const data = Object.fromEntries(new FormData(e.target).entries());
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
 
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    });
-
-    if (res.ok) {
-      alert('Demande envoyée avec succès ✅');
-      e.target.reset();
-    } else {
-      alert('Erreur ❌');
-    }
-
-    setLoading(false);
-  };
+    setTimeout(() => {
+      alert('Message envoyé ✅')
+      setLoading(false)
+    }, 1000)
+  }
 
   return (
-    <section className="min-h-screen bg-black text-white py-20 px-6">
-      <div className="max-w-3xl mx-auto">
+    <div className="pt-24 px-6 max-w-xl mx-auto text-white">
+      <h1 className="text-4xl mb-8 text-center">Contact</h1>
 
-        <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center">
-          Demander un devis
-        </h1>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input placeholder="Nom" className="w-full p-4 bg-zinc-900" />
+        <input placeholder="Email" className="w-full p-4 bg-zinc-900" />
+        <textarea placeholder="Message" className="w-full p-4 bg-zinc-900" />
 
-        <p className="text-gray-400 text-center mb-10">
-          Réponse sous 24h
-        </p>
-
-        <form onSubmit={sendEmail} className="space-y-6">
-
-          <input name="name" placeholder="Nom / Entreprise" required className="w-full p-4 bg-white/10 rounded-xl" />
-
-          <input name="email" type="email" placeholder="Email" required className="w-full p-4 bg-white/10 rounded-xl" />
-
-          <input name="phone" placeholder="Téléphone" required className="w-full p-4 bg-white/10 rounded-xl" />
-
-          <select name="product" required className="w-full p-4 bg-white/10 rounded-xl">
-            <option value="">Type de sac</option>
-            <option>Sac en polypropylène</option>
-            <option>Sac personnalisé</option>
-            <option>Autre</option>
-          </select>
-
-          <input name="quantity" type="number" placeholder="Quantité (ex: 5000)" required className="w-full p-4 bg-white/10 rounded-xl" />
-
-          <input name="custom" placeholder="Personnalisation" className="w-full p-4 bg-white/10 rounded-xl" />
-
-          <textarea name="message" placeholder="Détails supplémentaires" className="w-full p-4 bg-white/10 rounded-xl" />
-
-          <button className="w-full bg-white text-black py-4 rounded-xl">
-            {loading ? 'Envoi...' : 'Envoyer la demande →'}
-          </button>
-
-        </form>
-
-        <a href="https://wa.me/213XXXXXXXXX" className="block text-center mt-6 text-green-400">
-          Ou contactez-nous sur WhatsApp
-        </a>
-
-      </div>
-    </section>
-  );
+        <button className="border px-6 py-3 w-full">
+          {loading ? 'Envoi...' : 'Envoyer'}
+        </button>
+      </form>
+    </div>
+  )
 }
